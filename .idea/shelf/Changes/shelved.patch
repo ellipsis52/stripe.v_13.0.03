@@ -1,0 +1,3784 @@
+Index: modal/server/php/public/css/base.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/public/css/base.css b/modal/server/php/public/css/base.css
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/php/public/css/base.css	(date 1668060954000)
+@@ -0,0 +1,87 @@
++@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
++
++:root {
++  --light-grey: #F6F9FC;
++  --dark-terminal-color: #0A2540;
++  --accent-color: #635BFF;
++  --radius: 3px;
++}
++
++body {
++  padding: 20px;
++  font-family: 'Raleway';
++  display: flex;
++  justify-content: center;
++  font-size: 1.2em;
++  color: var(--dark-terminal-color);
++}
++
++main {
++  width: 480px;
++}
++
++form > * {
++  margin: 10px 0;
++}
++
++button {
++  background-color: var(--accent-color);
++}
++
++button {
++  background: var(--accent-color);
++  border-radius: var(--radius);
++  color: white;
++  border: 0;
++  padding: 12px 16px;
++  margin-top: 16px;
++  font-weight: 600;
++  cursor: pointer;
++  transition: all 0.2s ease;
++  display: block;
++}
++button:hover {
++  filter: contrast(115%);
++}
++button:active {
++  transform: translateY(0px) scale(0.98);
++  filter: brightness(0.9);
++}
++button:disabled {
++  opacity: 0.5;
++  cursor: none;
++}
++
++input, select {
++  display: block;
++  font-size: 1.1em;
++  width: 100%;
++}
++
++label {
++  display: block;
++}
++
++a {
++  color: var(--accent-color);
++  font-weight: 900;
++}
++
++#payment-form {
++  border: #F6F9FC solid 1px;
++  border-radius: var(--radius);
++  padding: 20px;
++  margin: 20px 0;
++  box-shadow: 0 30px 50px -20px rgb(50 50 93 / 25%), 0 30px 60px -30px rgb(0 0 0 / 30%);
++}
++
++#messages {
++  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
++  display: none; /* hide initially, then show once the first message arrives */
++  background-color: #0A253C;
++  color: #00D924;
++  padding: 20px;
++  margin: 20px 0;
++  border-radius: var(--radius);
++  font-size:0.7em;
++}
+Index: modal/server/java/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/java/README.md b/modal/server/java/README.md
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/java/README.md	(date 1668060954000)
+@@ -0,0 +1,21 @@
++# Name of sample
++
++## Requirements
++
++- Maven
++- Java
++- [Configured .env file](../README.md)
++
++1. Build the jar
++
++```
++mvn package
++```
++
++2. Run the packaged jar
++
++```
++java -cp target/sample-jar-with-dependencies.jar com.stripe.sample.Server
++```
++
++3. Go to `localhost:4242` in your browser to see the demo
+Index: modal/server/ruby/server.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/ruby/server.rb b/modal/server/ruby/server.rb
+new file mode 100755
+--- /dev/null	(date 1684083922000)
++++ b/modal/server/ruby/server.rb	(date 1684083922000)
+@@ -0,0 +1,164 @@
++# frozen_string_literal: true
++
++require
++'stripe'
++require
++'sinatra'
++require
++'dotenv'
++
++# Replace if using a different env file or config
++Dotenv.load
++
++# For sample support and debugging, not required for production:
++Stripe.set_app_info(
++    'stripe-samples/identity/modal',
++    version: '0.0.1',
++url: 'https://github.com/stripe-samples'
++)
++Stripe.api_version = '2020-08-27'
++Stripe.api_key = ENV['STRIPE_SECRET_KEY']
++
++set: static, true
++set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
++set: port, 4242
++
++get
++'/'
++do
++content_type
++'text/html'
++send_file
++File.join(settings.public_folder, 'index.html')
++end
++
++get
++'/config'
++do
++content_type
++'application/json'
++{
++    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
++}.to_json
++end
++
++post
++'/create-verification-session'
++do
++content_type
++'application/json'
++
++# See https://stripe.com/docs/api/identity/verification_sessions/create
++# for the full list of accepted parameters.
++verification_session = Stripe::Identity::VerificationSession.create({
++    type: 'document',  # 'id_number' | 'address'
++    metadata: {
++        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
++    },
++
++    # Additional options for configuring the verification session:
++    # options: {
++    #   document: {
++    #     # Array of strings of allowed identity document types.
++    #     allowed_types: ['driving_license'], # passport | id_card
++    #
++    #     # Collect an ID number and perform an ID number check with the
++    #     # document’s extracted name and date of birth.
++    #     require_id_number: true,
++    #
++    #     # Disable image uploads, identity document images have to be captured
++    #     # using the device’s camera.
++    #     require_live_capture: true,
++    #
++    #     # Capture a face image and perform a selfie check comparing a photo
++    #     # ID and a picture of your user’s face.
++    #     require_matching_selfie: true,
++    #   }
++    # },
++})
++
++# Send the VerificationSession client_secret to the client.
++{
++    client_secret: verification_session.client_secret
++}.to_json
++end
++
++post
++'/webhook'
++do
++# You can use webhooks to receive information about asynchronous payment events.
++# For more about our webhook events check out https://stripe.com/docs/webhooks.
++webhook_secret = ENV['STRIPE_WEBHOOK_SECRET']
++payload = request.body.read
++if !webhook_secret.empty?
++# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
++sig_header = request.env['HTTP_STRIPE_SIGNATURE']
++event = nil
++
++begin
++event = Stripe::Webhook.construct_event(
++    payload, sig_header, webhook_secret
++)
++rescue
++JSON::ParserError = > e
++# Invalid payload
++status
++400
++return
++rescue
++Stripe::SignatureVerificationError = > e
++# Invalid signature
++puts
++'⚠️  Webhook signature verification failed.'
++status
++400
++return
++end
++else
++data = JSON.parse(payload, symbolize_names: true)
++event = Stripe::Event.construct_from(data)
++end
++
++case
++event.type
++when
++'identity.verification_session.requires_input'
++verification_session = event.data.object
++
++puts
++" ❌ Identity requires input from user: #{verification_session.id}"
++
++# At least one of the verification checks failed
++
++case
++verification_session.last_error.code
++when
++'document_unverified_other'
++# The document was invalid
++when
++'document_expired'
++# The document was expired
++when
++'document_type_not_suported'
++# The document type was not supported
++else
++# ...
++end
++when
++'identity.verification_session.verified'
++verification_session = event.data.object
++puts
++" ✅ Identity verified: #{verification_session.id}"
++when
++'identity.verification_session.canceled', 'identity.verification_session.created', 'identity.verification_session.processing'
++verification_session = event.data.object
++puts
++" 🟡 #{event.type}: #{verification_session.id}"
++end
++
++content_type
++'application/json'
++{
++    status: 'success'
++}.to_json
++end
+Index: modal/server/java/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/java/pom.xml b/modal/server/java/pom.xml
+new file mode 100755
+--- /dev/null	(date 1683484789000)
++++ b/modal/server/java/pom.xml	(date 1683484789000)
+@@ -0,0 +1,74 @@
++<project>
++    <!-- model version - always 4.0.0 for Maven 2.x POMs -->
++    <modelVersion>4.0.0</modelVersion>
++
++    <!-- project coordinates - values which uniquely identify this project -->
++    <groupId>com.stripe.sample</groupId>
++    <artifactId>accept-a-payment</artifactId>
++    <version>1.0.0-SNAPSHOT</version>
++
++    <!-- library dependencies -->
++    <dependencies>
++        <dependency>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-simple</artifactId>
++            <version>2.0.3</version>
++        </dependency>
++        <dependency>
++            <groupId>com.sparkjava</groupId>
++            <artifactId>spark-core</artifactId>
++            <version>2.9.4</version>
++        </dependency>
++        <dependency>
++            <groupId>com.google.code.gson</groupId>
++            <artifactId>gson</artifactId>
++            <version>2.9.1</version>
++        </dependency>
++        <dependency>
++            <groupId>com.stripe</groupId>
++            <artifactId>stripe-java</artifactId>
++            <version>21.15.0</version>
++        </dependency>
++        <dependency>
++            <groupId>io.github.cdimascio</groupId>
++            <artifactId>java-dotenv</artifactId>
++            <version>5.2.2</version>
++        </dependency>
++    </dependencies>
++    <build>
++        <finalName>sample</finalName>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++                <version>3.10.1</version>
++                <configuration>
++                    <source>1.8</source>
++                    <target>1.8</target>
++                </configuration>
++            </plugin>
++            <plugin>
++                <artifactId>maven-assembly-plugin</artifactId>
++                <executions>
++                    <execution>
++                        <phase>package</phase>
++                        <goals>
++                            <goal>single</goal>
++                        </goals>
++                    </execution>
++                </executions>
++                <configuration>
++                    <descriptorRefs>
++                        <!-- This tells Maven to include all dependencies -->
++                        <descriptorRef>jar-with-dependencies</descriptorRef>
++                    </descriptorRefs>
++                    <archive>
++                        <manifest>
++                            <mainClass>Server</mainClass>
++                        </manifest>
++                    </archive>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
++</project>
+Index: modal/server/java/src/main/java/com/stripe/sample/Server.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/java/src/main/java/com/stripe/sample/Server.java b/modal/server/java/src/main/java/com/stripe/sample/Server.java
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/java/src/main/java/com/stripe/sample/Server.java	(date 1668060954000)
+@@ -0,0 +1,163 @@
++package com.stripe.sample;
++
++import java.util.HashMap;
++import java.nio.file.Paths;
++
++import static spark.Spark.get;
++import static spark.Spark.post;
++import static spark.Spark.staticFiles;
++import static spark.Spark.port;
++
++import com.google.gson.Gson;
++import com.google.gson.annotations.SerializedName;
++
++import com.stripe.Stripe;
++import com.stripe.net.ApiResource;
++import com.stripe.model.Event;
++import com.stripe.model.StripeObject;
++import com.stripe.model.EventDataObjectDeserializer;
++import com.stripe.model.identity.VerificationSession;
++import com.stripe.exception.*;
++import com.stripe.net.Webhook;
++import com.stripe.param.identity.VerificationSessionCreateParams;
++
++import io.github.cdimascio.dotenv.Dotenv;
++
++public class Server {
++  private static Gson gson = new Gson();
++
++  static class ConfigResponse {
++    private String publishableKey;
++
++    public ConfigResponse(String publishableKey) {
++      this.publishableKey = publishableKey;
++    }
++  }
++
++  static class FailureResponse {
++    private HashMap<String, String> error;
++
++    public FailureResponse(String message) {
++      this.error = new HashMap<String, String>();
++      this.error.put("message", message);
++    }
++  }
++
++  static class CreateVerificationSessionResponse {
++    @SerializedName("client_secret")
++    private String clientSecret;
++
++    public CreateVerificationSessionResponse(String clientSecret) {
++      this.clientSecret = clientSecret;
++    }
++  }
++
++  public static void main(String[] args) {
++    port(4242);
++    Dotenv dotenv = Dotenv.load();
++
++    Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY");
++
++    // For sample support and debugging, not required for production:
++    Stripe.setAppInfo(
++        "stripe-samples/identity/modal",
++        "0.0.1",
++        "https://github.com/stripe-samples"
++        );
++
++    staticFiles.externalLocation(
++        Paths.get(
++          Paths.get("").toAbsolutePath().toString(),
++          dotenv.get("STATIC_DIR")
++          ).normalize().toString());
++
++    get("/config", (request, response) -> {
++      response.type("application/json");
++
++      return gson.toJson(new ConfigResponse(dotenv.get("STRIPE_PUBLISHABLE_KEY")));
++    });
++
++    post("/create-verification-session", (request, response) -> {
++      response.type("application/json");
++
++      VerificationSessionCreateParams createParams = new VerificationSessionCreateParams
++        .Builder()
++        .setType(VerificationSessionCreateParams.Type.DOCUMENT)
++        .build();
++
++      try {
++        // Create a VerificationSession
++        VerificationSession session = VerificationSession.create(createParams);
++
++        // Send VerificationSession client_secret to client
++        return gson.toJson(new CreateVerificationSessionResponse(session.getClientSecret()));
++      } catch(StripeException e) {
++        response.status(400);
++        return gson.toJson(new FailureResponse(e.getMessage()));
++      } catch(Exception e) {
++        response.status(500);
++        return gson.toJson(e);
++      }
++    });
++
++    post("/webhook", (request, response) -> {
++      String payload = request.body();
++      String sigHeader = request.headers("Stripe-Signature");
++      String endpointSecret = dotenv.get("STRIPE_WEBHOOK_SECRET");
++
++      Event event = null;
++
++      try {
++        event = Webhook.constructEvent(payload, sigHeader, endpointSecret);
++      } catch (SignatureVerificationException e) {
++        // Invalid signature
++        response.status(400);
++        return "";
++      }
++
++      // Deserialize the nested object inside the event
++      EventDataObjectDeserializer dataObjectDeserializer = event.getDataObjectDeserializer();
++      StripeObject stripeObject = null;
++      switch(event.getType()) {
++        case "identity.verification_session.verified":
++          // All the verification checks passed
++          if (dataObjectDeserializer.getObject().isPresent()) {
++            VerificationSession verificationSession = (VerificationSession) dataObjectDeserializer.getObject().get();
++          } else {
++            // Deserialization failed, probably due to an API version mismatch.
++            // Refer to the Javadoc documentation on `EventDataObjectDeserializer` for
++            // instructions on how to handle this case, or return an error here.
++          }
++          break;
++        case "identity.verification_session.requires_input":
++          // At least one of the verification checks failed
++          if (dataObjectDeserializer.getObject().isPresent()) {
++            VerificationSession verificationSession = (VerificationSession) dataObjectDeserializer.getObject().get();
++
++            switch(verificationSession.getLastError().getCode()) {
++              case "document_unverified_other":
++                // the document was invalid
++                break;
++              case "document_expired":
++                // the document was expired
++                break;
++              case "document_type_not_supported":
++                // document type not supported
++                break;
++              default:
++                // ...
++            }
++          } else {
++            // Deserialization failed, probably due to an API version mismatch.
++            // Refer to the Javadoc documentation on `EventDataObjectDeserializer` for
++            // instructions on how to handle this case, or return an error here.
++          }
++          break;
++        default:
++          // other event type
++      }
++      response.status(200);
++      return "";
++    });
++  }
++}
+Index: modal/server/node/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/node/README.md b/modal/server/node/README.md
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/node/README.md	(date 1668060954000)
+@@ -0,0 +1,24 @@
++# Name of sample
++
++An [Express server](http://expressjs.com) implementation
++
++## Requirements
++
++- Node v10+
++- [Configured .env file](../README.md)
++
++## How to run
++
++1. Install dependencies
++
++```
++npm install
++```
++
++2. Run the application
++
++```
++npm start
++```
++
++3. Go to `localhost:4242` to see the demo
+Index: modal/server/node/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/node/package.json b/modal/server/node/package.json
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/node/package.json	(date 1668060954000)
+@@ -0,0 +1,18 @@
++{
++  "name": "stripe-sample-demo",
++  "version": "1.0.0",
++  "description": "A Stripe demo",
++  "main": "server.js",
++  "scripts": {
++    "start": "node server.js",
++    "test": "echo \"Error: no test specified\" && exit 1"
++  },
++  "author": "stripe-demos",
++  "license": "ISC",
++  "dependencies": {
++    "body-parser": "^1.19.0",
++    "dotenv": "^16.0.0",
++    "express": "^4.17.1",
++    "stripe": "^10.1.0"
++  }
++}
+Index: modal/server/node/server.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/node/server.js b/modal/server/node/server.js
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/node/server.js	(date 1668060954000)
+@@ -0,0 +1,150 @@
++const express = require('express');
++const app = express();
++const { resolve } = require('path');
++// Replace if using a different env file or config
++const env = require('dotenv').config({ path: './.env' });
++
++const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
++  apiVersion: '2020-08-27',
++  appInfo: { // For sample support and debugging, not required for production:
++    name: "stripe-samples/identity/modal",
++    version: "0.0.1",
++    url: "https://github.com/stripe-samples"
++  }
++});
++
++app.use(express.static(process.env.STATIC_DIR));
++app.use(
++  express.json({
++    // We need the raw body to verify webhook signatures.
++    // Let's compute it only when hitting the Stripe webhook endpoint.
++    verify: function(req, res, buf) {
++      if (req.originalUrl.startsWith('/webhook')) {
++        req.rawBody = buf.toString();
++      }
++    }
++  })
++);
++
++app.get('/', (req, res) => {
++  const path = resolve(process.env.STATIC_DIR + '/index.html');
++  res.sendFile(path);
++});
++
++app.get('/config', (req, res) => {
++  res.send({
++    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
++  });
++});
++
++app.post('/create-verification-session', async (req, res) => {
++  try {
++    const verificationSession = await stripe.identity.verificationSessions.create({
++      type: 'document',
++      metadata: {
++        user_id: '{{USER_ID}}',
++      }
++      // Additional options for configuring the verification session:
++      // options: {
++      //   document: {
++      //     # Array of strings of allowed identity document types.
++      //     allowed_types: ['driving_license'], # passport | id_card
++      //
++      //     # Collect an ID number and perform an ID number check with the
++      //     # document’s extracted name and date of birth.
++      //     require_id_number: true,
++      //
++      //     # Disable image uploads, identity document images have to be captured
++      //     # using the device’s camera.
++      //     require_live_capture: true,
++      //
++      //     # Capture a face image and perform a selfie check comparing a photo
++      //     # ID and a picture of your user’s face.
++      //     require_matching_selfie: true,
++      //   }
++      // },
++
++    });
++
++    // Send publishable key and PaymentIntent details to client
++    res.send({
++      client_secret: verificationSession.client_secret
++    });
++
++  } catch(e) {
++    console.log(e)
++    return res.status(400).send({
++      error: {
++        message: e.message
++      }
++    });
++  }
++});
++
++// Expose a endpoint as a webhook handler for asynchronous events.
++// Configure your webhook in the stripe developer dashboard
++// https://dashboard.stripe.com/test/webhooks
++app.post('/webhook', async (req, res) => {
++  let data, eventType;
++
++  // Check if webhook signing is configured.
++  if (process.env.STRIPE_WEBHOOK_SECRET) {
++    // Retrieve the event by verifying the signature using the raw body and secret.
++    let event;
++    let signature = req.headers['stripe-signature'];
++    try {
++      event = stripe.webhooks.constructEvent(
++        req.rawBody,
++        signature,
++        process.env.STRIPE_WEBHOOK_SECRET
++      );
++    } catch (err) {
++      console.log(`⚠️  Webhook signature verification failed.`);
++      return res.sendStatus(400);
++    }
++    data = event.data;
++    eventType = event.type;
++  } else {
++    // Webhook signing is recommended, but if the secret is not configured in `config.js`,
++    // we can retrieve the event data directly from the request body.
++    data = req.body.data;
++    eventType = req.body.type;
++  }
++
++  // Successfully constructed event
++  switch (eventType) {
++    case 'identity.verification_session.verified': {
++      // All the verification checks passed
++      const verificationSession = data.object;
++      break;
++    }
++    case 'identity.verification_session.requires_input': {
++      // At least one of the verification checks failed
++      const verificationSession = data.object;
++
++      console.log('Verification check failed: ' + verificationSession.last_error.reason);
++
++      // Handle specific failure reasons
++      switch (verificationSession.last_error.code) {
++        case 'document_unverified_other': {
++          // The document was invalid
++          break;
++        }
++        case 'document_expired': {
++          // The document was expired
++          break;
++        }
++        case 'document_type_not_supported': {
++          // document type not supported
++          break;
++        }
++        default: {
++          // ...
++        }
++      }
++    }
++  }
++  res.sendStatus(200);
++});
++
++app.listen(4242, () => console.log(`Node server listening at http://localhost:4242`));
+Index: modal/server/ruby/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/ruby/README.md b/modal/server/ruby/README.md
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/ruby/README.md	(date 1668060954000)
+@@ -0,0 +1,24 @@
++# Name of sample
++
++A [Sinatra](http://sinatrarb.com/) implementation.
++
++## Requirements
++
++- Ruby v2.4.5+
++- [Configured .env file](../README.md)
++
++## How to run
++
++1. Install dependencies
++
++```
++bundle install
++```
++
++2. Run the application
++
++```
++ruby server.rb
++```
++
++3. Go to `http://localhost:4242` in your browser to see the demo
+Index: modal/server/ruby/Gemfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/ruby/Gemfile b/modal/server/ruby/Gemfile
+new file mode 100755
+--- /dev/null	(date 1684083922000)
++++ b/modal/server/ruby/Gemfile	(date 1684083922000)
+@@ -0,0 +1,8 @@
++source 'https://rubygems.org/'
++
++gem 'dotenv'
++gem 'json'
++gem 'sinatra'
++gem 'stripe', '7.1.0'
++gem 'webrick'
++
+Index: modal/server/dotnet/appsettings.Development.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/appsettings.Development.json b/modal/server/dotnet/appsettings.Development.json
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/appsettings.Development.json	(date 1668060954000)
+@@ -0,0 +1,9 @@
++{
++  "Logging": {
++    "LogLevel": {
++      "Default": "Information",
++      "Microsoft": "Warning",
++      "Microsoft.Hosting.Lifetime": "Information"
++    }
++  }
++}
+Index: modal/server/dotnet/server.csproj
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/server.csproj b/modal/server/dotnet/server.csproj
+new file mode 100644
+--- /dev/null	(date 1684083922000)
++++ b/modal/server/dotnet/server.csproj	(date 1684083922000)
+@@ -0,0 +1,20 @@
++<Project Sdk="Microsoft.NET.Sdk.Web">
++
++  <PropertyGroup>
++    <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
++  </PropertyGroup>
++
++
++
++  <ItemGroup>
++    <Folder Include="Configuration\" />
++    <Folder Include="Controllers\" />
++    <Folder Include="Models\" />
++  </ItemGroup>
++  <ItemGroup>
++    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="[3.1,]" />
++    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
++    <PackageReference Include="DotNetEnv" Version="2.3.0" />
++    <PackageReference Include="Stripe.net" Version="40.16.0" />
++  </ItemGroup>
++</Project>
+Index: modal/server/dotnet/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/README.md b/modal/server/dotnet/README.md
+new file mode 100755
+--- /dev/null	(date 1683484789000)
++++ b/modal/server/dotnet/README.md	(date 1683484789000)
+@@ -0,0 +1,40 @@
++# Accept a payment
++
++An [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) implementation
++
++You can [🎥 watch a video](https://www.youtube.com/watch?v=mqEjRgoZWdo) to see how this server was implemented
++and [read the transcripts](./TRANSCRIPTS.md).
++
++## Requirements
++
++* .NET Core
++* [Configured .env file](../../README.md)
++
++## How to run
++
++1. Confirm `.env` configuration
++
++Ensure the API keys are configured in `.env` in this directory. It should include the following keys:
++
++```yaml
++# Stripe API keys - see https://stripe.com/docs/development/quickstart#api-keys
++STRIPE_PUBLISHABLE_KEY=pk_test...
++STRIPE_SECRET_KEY=sk_test...
++
++# Required to verify signatures in the webhook handler.
++# See README on how to use the Stripe CLI to test webhooks
++STRIPE_WEBHOOK_SECRET=whsec_...
++
++# Path to front-end implementation. Note: PHP has it's own front end implementation.
++STATIC_DIR=../../client/html
++DOMAIN=http://localhost:4242
++```
++
++2. Run the application
++
++```
++dotnet run Program.cs
++```
++
++4. If you're using the html client, go to `localhost:4242` to see the demo. For
++   react, visit `localhost:3000`.
+Index: modal/server/dotnet/appsettings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/appsettings.json b/modal/server/dotnet/appsettings.json
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/appsettings.json	(date 1668060954000)
+@@ -0,0 +1,10 @@
++{
++  "Logging": {
++    "LogLevel": {
++      "Default": "Information",
++      "Microsoft": "Warning",
++      "Microsoft.Hosting.Lifetime": "Information"
++    }
++  },
++  "AllowedHosts": "*"
++}
+Index: modal/server/dotnet/Startup.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/Startup.cs b/modal/server/dotnet/Startup.cs
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/Startup.cs	(date 1668060954000)
+@@ -0,0 +1,76 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Threading.Tasks;
++using Microsoft.AspNetCore.Builder;
++using Microsoft.AspNetCore.Hosting;
++using Microsoft.AspNetCore.HttpsPolicy;
++using Microsoft.Extensions.Configuration;
++using Microsoft.Extensions.DependencyInjection;
++using Microsoft.Extensions.Hosting;
++using Newtonsoft.Json.Serialization;
++using Stripe;
++
++namespace server
++{
++    public class Startup
++    {
++        public Startup(IConfiguration configuration)
++        {
++            Configuration = configuration;
++        }
++
++        public IConfiguration Configuration { get; }
++
++        // This method gets called by the runtime. Use this method to add services to the container.
++        public void ConfigureServices(IServiceCollection services)
++        {
++            // For sample support and debugging, not required for production:
++            StripeConfiguration.AppInfo = new AppInfo
++            {
++                Name = "stripe-samples/identity/modal",
++                Url = "https://github.com/stripe-samples",
++                Version = "0.0.1",
++            };
++            services.Configure<StripeOptions>(options =>
++            {
++                options.PublishableKey = Environment.GetEnvironmentVariable("STRIPE_PUBLISHABLE_KEY");
++                options.SecretKey = Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY");
++                options.WebhookSecret = Environment.GetEnvironmentVariable("STRIPE_WEBHOOK_SECRET");
++            });
++
++            services.AddControllersWithViews().AddNewtonsoftJson(options =>
++            {
++                options.SerializerSettings.ContractResolver = new DefaultContractResolver
++                {
++                    NamingStrategy = new SnakeCaseNamingStrategy(),
++                };
++            });
++        }
++
++        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
++        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
++        {
++            if (env.IsDevelopment())
++            {
++                app.UseDeveloperExceptionPage();
++            }
++            else
++            {
++                app.UseExceptionHandler("/Error");
++                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
++                app.UseHsts();
++            }
++            //app.UseHttpsRedirection();
++            app.UseFileServer();
++            app.UseRouting();
++            app.UseAuthorization();
++            app.UseEndpoints(endpoints =>
++            {
++                endpoints.MapControllerRoute(
++                    name: "default",
++                    pattern: "{controller=Home}/{action=Index}/{id?}");
++            });
++        }
++    }
++}
+Index: modal/server/dotnet/server.sln
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/server.sln b/modal/server/dotnet/server.sln
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/server.sln	(date 1668060954000)
+@@ -0,0 +1,17 @@
++
++Microsoft Visual Studio Solution File, Format Version 12.00
++# Visual Studio 15
++Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "server.csproj", "{A5BE002D-4BA4-4611-B86E-87602A060827}"
++EndProject
++Global
++	GlobalSection(SolutionConfigurationPlatforms) = preSolution
++		Debug|Any CPU = Debug|Any CPU
++		Release|Any CPU = Release|Any CPU
++	EndGlobalSection
++	GlobalSection(ProjectConfigurationPlatforms) = postSolution
++		{A5BE002D-4BA4-4611-B86E-87602A060827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
++		{A5BE002D-4BA4-4611-B86E-87602A060827}.Debug|Any CPU.Build.0 = Debug|Any CPU
++		{A5BE002D-4BA4-4611-B86E-87602A060827}.Release|Any CPU.ActiveCfg = Release|Any CPU
++		{A5BE002D-4BA4-4611-B86E-87602A060827}.Release|Any CPU.Build.0 = Release|Any CPU
++	EndGlobalSection
++EndGlobal
+Index: modal/server/dotnet/Program.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/Program.cs b/modal/server/dotnet/Program.cs
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/Program.cs	(date 1668060954000)
+@@ -0,0 +1,30 @@
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Threading.Tasks;
++using Microsoft.AspNetCore.Hosting;
++using Microsoft.Extensions.Configuration;
++using Microsoft.Extensions.Hosting;
++using Microsoft.Extensions.Logging;
++
++namespace server
++{
++    public class Program
++    {
++        public static void Main(string[] args)
++        {
++            CreateHostBuilder(args).Build().Run();
++        }
++
++        public static IHostBuilder CreateHostBuilder(string[] args)
++        {
++            DotNetEnv.Env.Load();
++            return Host.CreateDefaultBuilder(args)
++                .ConfigureWebHostDefaults(webBuilder =>
++                {
++                    webBuilder.UseStartup<Startup>();
++                    webBuilder.UseWebRoot(Environment.GetEnvironmentVariable("STATIC_DIR"));
++                });
++        }   
++    }
++}
+Index: modal/client/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/client/index.html b/modal/client/index.html
+new file mode 100755
+--- /dev/null	(date 1684091117000)
++++ b/modal/client/index.html	(date 1684091117000)
+@@ -0,0 +1,63 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="utf-8"/>
++    <title>webtechnicom Identity </title>
++    <meta content="A demo of Stripe Identity" name="description"/>
++    <link href="css/normalize.css" rel="stylesheet"/>
++    <link href="css/global.css" rel="stylesheet"/>
++    <script src="https://js.stripe.com/v3/"></script>
++</head>
++<body>
++<div class="sr-root">
++    <div class="sr-main">
++        <section class="container">
++            <div>
++                <h1>Verify your identity to book</h1>
++                <h4>Get ready to take a photo of your ID and a selfie</h4>
++
++                <button id="verify-button">Verify me</button>
++            </div>
++        </section>
++    </div>
++</div>
++<script type="text/javascript">
++      document.addEventListener('DOMContentLoaded', async () => {
++
++        // Set your publishable key: remember to change this to your live publishable key in production
++        // Find your keys here: https://dashboard.stripe.com/apikeys
++        const {publishableKey} = await fetch('/config').then(r=>r.json());
++        const stripe = Stripe(publishableKey);
++
++        var verifyButton = document.getElementById('verify-button');
++        verifyButton.addEventListener('click', async () => {
++          // Get the VerificationSession client secret using the server-side
++          // endpoint you created in step 3.
++
++          try {
++
++            // Create the VerificationSession on the server.
++            const {client_secret} = await fetch('/create-verification-session', {
++              method: 'POST',
++            }).then(r => r.json())
++
++            // Open the modal on the client.
++            const {error} = await stripe.verifyIdentity(client_secret);
++            if(!error) {
++              window.location.href = '/submitted.html';
++            } else {
++              alert(error.message);
++            }
++          } catch(e) {
++            alert(e.message);
++          }
++        })
++
++      })
++
++
++
++
++</script>
++</body>
++</html>
+Index: modal/client/submitted.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/client/submitted.html b/modal/client/submitted.html
+new file mode 100755
+--- /dev/null	(date 1683484794000)
++++ b/modal/client/submitted.html	(date 1683484794000)
+@@ -0,0 +1,23 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="utf-8"/>
++    <title>Identity verification submitted</title>
++    <link href="css/normalize.css" rel="stylesheet"/>
++    <link href="css/global.css" rel="stylesheet"/>
++</head>
++<body>
++<div class="sr-root">
++    <div class="sr-main">
++        <section class="container">
++            <div>
++                <h1>Thanks for submitting your identity document.</h1>
++                <p>We are processing your verification.</p>
++
++                <a href="/">Restart demo</a>
++            </div>
++        </section>
++    </div>
++</div>
++</body>
++</html>
+Index: modal/client/css/global.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/client/css/global.css b/modal/client/css/global.css
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/client/css/global.css	(date 1668060954000)
+@@ -0,0 +1,525 @@
++/* Variables */
++:root {
++  --gray-offset: rgba(0, 0, 0, 0.03);
++  --gray-border: rgba(0, 0, 0, 0.15);
++  --gray-light: rgba(0, 0, 0, 0.4);
++  --gray-mid: rgba(0, 0, 0, 0.7);
++  --gray-dark: rgba(0, 0, 0, 0.9);
++  --body-color: var(--gray-mid);
++  --headline-color: var(--gray-dark);
++  --accent-color: #0066f0;
++  --body-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
++  --radius: 6px;
++  --form-width: 343px;
++}
++
++/* Base */
++* {
++  box-sizing: border-box;
++}
++body {
++  font-family: var(--body-font-family);
++  font-size: 16px;
++  color: var(--body-color);
++  -webkit-font-smoothing: antialiased;
++}
++h1,
++h2,
++h3,
++h4,
++h5,
++h6 {
++  color: var(--body-color);
++  margin-top: 2px;
++  margin-bottom: 4px;
++}
++h1 {
++  font-size: 27px;
++  color: var(--headline-color);
++}
++h4 {
++  font-weight: 500;
++  font-size: 14px;
++  color: var(--gray-light);
++}
++
++/* Layout */
++.sr-root {
++  display: flex;
++  flex-direction: row;
++  width: 100%;
++  max-width: 980px;
++  padding: 48px;
++  align-content: center;
++  justify-content: center;
++  height: auto;
++  min-height: 100vh;
++  margin: 0 auto;
++}
++.sr-header {
++  margin-bottom: 32px;
++}
++.sr-payment-summary {
++  margin-bottom: 20px;
++}
++.sr-main,
++.sr-content {
++  display: flex;
++  flex-direction: column;
++  justify-content: center;
++  height: 100%;
++  align-self: center;
++}
++.sr-main {
++  width: var(--form-width);
++}
++.sr-content {
++  padding-left: 48px;
++}
++.sr-header__logo {
++  background-image: var(--logo-image);
++  height: 24px;
++  background-size: contain;
++  background-repeat: no-repeat;
++  width: 100%;
++}
++.sr-legal-text {
++  color: var(--gray-light);
++  text-align: center;
++  font-size: 13px;
++  line-height: 17px;
++  margin-top: 12px;
++}
++.sr-field-error {
++  color: var(--accent-color);
++  text-align: left;
++  font-size: 13px;
++  line-height: 17px;
++  margin-top: 12px;
++}
++
++/* Form */
++.sr-form-row {
++  margin: 16px 0;
++}
++label {
++  font-size: 13px;
++  font-weight: 500;
++  margin-bottom: 8px;
++  display: inline-block;
++}
++
++/* Inputs */
++.sr-input,
++.sr-select,
++input[type="text"] {
++  border: 1px solid var(--gray-border);
++  border-radius: var(--radius);
++  padding: 5px 12px;
++  height: 44px;
++  width: 100%;
++  transition: box-shadow 0.2s ease;
++  background: white;
++  -moz-appearance: none;
++  -webkit-appearance: none;
++  appearance: none;
++  color: #32325d;
++}
++.sr-input:focus,
++input[type="text"]:focus,
++button:focus,
++.focused {
++  box-shadow: 0 0 0 1px rgba(50, 151, 211, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.07),
++    0 0 0 4px rgba(50, 151, 211, 0.3);
++  outline: none;
++  z-index: 9;
++}
++.sr-input::placeholder,
++input[type="text"]::placeholder {
++  color: var(--gray-light);
++}
++
++/* Checkbox */
++.sr-checkbox-label {
++  position: relative;
++  cursor: pointer;
++}
++
++.sr-checkbox-label input {
++  opacity: 0;
++  margin-right: 6px;
++}
++
++.sr-checkbox-label .sr-checkbox-check {
++  position: absolute;
++  left: 0;
++  height: 16px;
++  width: 16px;
++  background-color: white;
++  border: 1px solid var(--gray-border);
++  border-radius: 4px;
++  transition: all 0.2s ease;
++}
++
++.sr-checkbox-label input:focus ~ .sr-checkbox-check {
++  box-shadow: 0 0 0 1px rgba(50, 151, 211, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.07),
++    0 0 0 4px rgba(50, 151, 211, 0.3);
++  outline: none;
++}
++
++.sr-checkbox-label input:checked ~ .sr-checkbox-check {
++  background-color: var(--accent-color);
++  background-repeat: no-repeat;
++  background-size: 16px;
++  background-position: -1px -1px;
++}
++
++/* Select */
++.sr-select {
++  display: block;
++  height: 44px;
++  margin: 0;
++  background-repeat: no-repeat, repeat;
++  background-position: right 12px top 50%, 0 0;
++  background-size: 0.65em auto, 100%;
++}
++.sr-select::-ms-expand {
++  display: none;
++}
++.sr-select:hover {
++  cursor: pointer;
++}
++.sr-select:focus {
++  box-shadow: 0 0 0 1px rgba(50, 151, 211, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.07),
++    0 0 0 4px rgba(50, 151, 211, 0.3);
++  outline: none;
++}
++.sr-select option {
++  font-weight: 400;
++}
++.sr-select:invalid {
++  color: var(--gray-light);
++}
++
++/* Combo inputs */
++.sr-combo-inputs {
++  display: flex;
++  flex-direction: column;
++}
++.sr-combo-inputs input,
++.sr-combo-inputs .sr-select {
++  border-radius: 0;
++  border-bottom: 0;
++}
++.sr-combo-inputs > input:first-child,
++.sr-combo-inputs > .sr-select:first-child {
++  border-radius: var(--radius) var(--radius) 0 0;
++}
++.sr-combo-inputs > input:last-child,
++.sr-combo-inputs > .sr-select:last-child {
++  border-radius: 0 0 var(--radius) var(--radius);
++  border-bottom: 1px solid var(--gray-border);
++}
++.sr-combo-inputs > .sr-combo-inputs-row:last-child input:first-child {
++  border-radius: 0 0 0 var(--radius);
++  border-bottom: 1px solid var(--gray-border);
++}
++.sr-combo-inputs > .sr-combo-inputs-row:last-child input:last-child {
++  border-radius: 0 0 var(--radius) 0;
++  border-bottom: 1px solid var(--gray-border);
++}
++.sr-combo-inputs > .sr-combo-inputs-row:first-child input:first-child {
++  border-radius: var(--radius) 0 0 0;
++}
++.sr-combo-inputs > .sr-combo-inputs-row:first-child input:last-child {
++  border-radius: 0 var(--radius) 0 0;
++}
++.sr-combo-inputs > .sr-combo-inputs-row:first-child input:only-child {
++  border-radius: var(--radius) var(--radius) 0 0;
++}
++.sr-combo-inputs-row {
++  width: 100%;
++  display: flex;
++}
++
++.sr-combo-inputs-row > input {
++  width: 100%;
++  border-radius: 0;
++}
++
++.sr-combo-inputs-row > input:first-child:not(:only-child) {
++  border-right: 0;
++}
++
++.sr-combo-inputs-row:not(:first-of-type) .sr-input {
++  border-radius: 0 0 var(--radius) var(--radius);
++}
++
++.sr-result {
++  height: 44px;
++  -webkit-transition: height 1s ease;
++  -moz-transition: height 1s ease;
++  -o-transition: height 1s ease;
++  transition: height 1s ease;
++  color: var(--font-color);
++  overflow: auto;
++}
++.sr-result code {
++  overflow: scroll;
++}
++.sr-result.expand {
++  height: 350px;
++}
++
++/* Buttons and links */
++button {
++  background: var(--accent-color);
++  border-radius: var(--radius);
++  color: white;
++  border: 0;
++  padding: 12px 16px;
++  margin-top: 16px;
++  font-weight: 600;
++  cursor: pointer;
++  transition: all 0.2s ease;
++  display: block;
++}
++button:hover {
++  filter: contrast(115%);
++}
++button:active {
++  transform: translateY(0px) scale(0.98);
++  filter: brightness(0.9);
++}
++button:disabled {
++  opacity: 0.5;
++  cursor: not-allowed;
++}
++
++.sr-payment-form button,
++.fullwidth {
++  width: 100%;
++}
++
++a {
++  color: var(--accent-color);
++  text-decoration: none;
++  transition: all 0.2s ease;
++}
++
++a:hover {
++  filter: brightness(0.8);
++}
++
++a:active {
++  filter: brightness(0.5);
++}
++
++/* Code block */
++.sr-callout {
++  background: var(--gray-offset);
++  padding: 12px;
++  border-radius: var(--radius);
++  max-height: 200px;
++  overflow: auto;
++}
++code,
++pre {
++  font-family: "SF Mono", "IBM Plex Mono", "Menlo", monospace;
++  font-size: 12px;
++}
++
++/* Stripe Element placeholder */
++.sr-card-element {
++  padding-top: 12px;
++}
++
++/* Responsiveness */
++@media (max-width: 720px) {
++  .sr-root {
++    flex-direction: column;
++    justify-content: flex-start;
++    padding: 48px 20px;
++    min-width: 320px;
++  }
++
++  .sr-header__logo {
++    background-position: center;
++  }
++
++  .sr-payment-summary {
++    text-align: center;
++  }
++
++  .sr-content {
++    display: none;
++  }
++
++  .sr-main {
++    width: 100%;
++  }
++}
++
++/* Pasha styles – Brand-overrides, can split these out */
++:root {
++  --accent-color: #ed5f74;
++  --headline-color: var(--accent-color);
++}
++
++.pasha-image-stack {
++  display: grid;
++  grid-gap: 12px;
++  grid-template-columns: auto auto;
++}
++
++.pasha-image-stack img {
++  border-radius: var(--radius);
++  background-color: var(--gray-border);
++  box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1),
++    0 3px 6px 0 rgba(0, 0, 0, 0.07);
++  transition: all 0.8s ease;
++  opacity: 0;
++}
++
++.pasha-image-stack img:nth-child(1) {
++  transform: translate(12px, -12px);
++  opacity: 1;
++}
++.pasha-image-stack img:nth-child(2) {
++  transform: translate(-24px, 16px);
++  opacity: 1;
++}
++.pasha-image-stack img:nth-child(3) {
++  transform: translate(68px, -100px);
++  opacity: 1;
++}
++
++/* todo: spinner/processing state, errors, animations */
++
++.spinner,
++.spinner:before,
++.spinner:after {
++  border-radius: 50%;
++}
++.spinner {
++  color: #ffffff;
++  font-size: 22px;
++  text-indent: -99999px;
++  margin: 0px auto;
++  position: relative;
++  width: 20px;
++  height: 20px;
++  box-shadow: inset 0 0 0 2px;
++  -webkit-transform: translateZ(0);
++  -ms-transform: translateZ(0);
++  transform: translateZ(0);
++}
++.spinner:before,
++.spinner:after {
++  position: absolute;
++  content: "";
++}
++.spinner:before {
++  width: 10.4px;
++  height: 20.4px;
++  background: var(--accent-color);
++  border-radius: 20.4px 0 0 20.4px;
++  top: -0.2px;
++  left: -0.2px;
++  -webkit-transform-origin: 10.4px 10.2px;
++  transform-origin: 10.4px 10.2px;
++  -webkit-animation: loading 2s infinite ease 1.5s;
++  animation: loading 2s infinite ease 1.5s;
++}
++.spinner:after {
++  width: 10.4px;
++  height: 10.2px;
++  background: var(--accent-color);
++  border-radius: 0 10.2px 10.2px 0;
++  top: -0.1px;
++  left: 10.2px;
++  -webkit-transform-origin: 0px 10.2px;
++  transform-origin: 0px 10.2px;
++  -webkit-animation: loading 2s infinite ease;
++  animation: loading 2s infinite ease;
++}
++@-webkit-keyframes loading {
++  0% {
++    -webkit-transform: rotate(0deg);
++    transform: rotate(0deg);
++  }
++  100% {
++    -webkit-transform: rotate(360deg);
++    transform: rotate(360deg);
++  }
++}
++@keyframes loading {
++  0% {
++    -webkit-transform: rotate(0deg);
++    transform: rotate(0deg);
++  }
++  100% {
++    -webkit-transform: rotate(360deg);
++    transform: rotate(360deg);
++  }
++}
++
++/* Animated form */
++
++.sr-root {
++  animation: 0.4s form-in;
++  animation-fill-mode: both;
++  animation-timing-function: ease;
++}
++
++.sr-payment-form .sr-form-row {
++  animation: 0.4s field-in;
++  animation-fill-mode: both;
++  animation-timing-function: ease;
++  transform-origin: 50% 0%;
++}
++
++/* need saas for loop :D  */
++.sr-payment-form .sr-form-row:nth-child(1) {
++  animation-delay: 0;
++}
++.sr-payment-form .sr-form-row:nth-child(2) {
++  animation-delay: 60ms;
++}
++.sr-payment-form .sr-form-row:nth-child(3) {
++  animation-delay: 120ms;
++}
++.sr-payment-form .sr-form-row:nth-child(4) {
++  animation-delay: 180ms;
++}
++.sr-payment-form .sr-form-row:nth-child(5) {
++  animation-delay: 240ms;
++}
++.sr-payment-form .sr-form-row:nth-child(6) {
++  animation-delay: 300ms;
++}
++.hidden {
++  display: none;
++}
++
++@keyframes field-in {
++  0% {
++    opacity: 0;
++    transform: translateY(8px) scale(0.95);
++  }
++  100% {
++    opacity: 1;
++    transform: translateY(0px) scale(1);
++  }
++}
++
++@keyframes form-in {
++  0% {
++    opacity: 0;
++    transform: scale(0.98);
++  }
++  100% {
++    opacity: 1;
++    transform: scale(1);
++  }
++}
+Index: modal/client/css/normalize.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/client/css/normalize.css b/modal/client/css/normalize.css
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/client/css/normalize.css	(date 1668060954000)
+@@ -0,0 +1,349 @@
++/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
++
++/* Document
++   ========================================================================== */
++
++/**
++ * 1. Correct the line height in all browsers.
++ * 2. Prevent adjustments of font size after orientation changes in iOS.
++ */
++
++ html {
++    line-height: 1.15; /* 1 */
++    -webkit-text-size-adjust: 100%; /* 2 */
++  }
++  
++  /* Sections
++     ========================================================================== */
++  
++  /**
++   * Remove the margin in all browsers.
++   */
++  
++  body {
++    margin: 0;
++  }
++  
++  /**
++   * Render the `main` element consistently in IE.
++   */
++  
++  main {
++    display: block;
++  }
++  
++  /**
++   * Correct the font size and margin on `h1` elements within `section` and
++   * `article` contexts in Chrome, Firefox, and Safari.
++   */
++  
++  h1 {
++    font-size: 2em;
++    margin: 0.67em 0;
++  }
++  
++  /* Grouping content
++     ========================================================================== */
++  
++  /**
++   * 1. Add the correct box sizing in Firefox.
++   * 2. Show the overflow in Edge and IE.
++   */
++  
++  hr {
++    box-sizing: content-box; /* 1 */
++    height: 0; /* 1 */
++    overflow: visible; /* 2 */
++  }
++  
++  /**
++   * 1. Correct the inheritance and scaling of font size in all browsers.
++   * 2. Correct the odd `em` font sizing in all browsers.
++   */
++  
++  pre {
++    font-family: monospace, monospace; /* 1 */
++    font-size: 1em; /* 2 */
++  }
++  
++  /* Text-level semantics
++     ========================================================================== */
++  
++  /**
++   * Remove the gray background on active links in IE 10.
++   */
++  
++  a {
++    background-color: transparent;
++  }
++  
++  /**
++   * 1. Remove the bottom border in Chrome 57-
++   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
++   */
++  
++  abbr[title] {
++    border-bottom: none; /* 1 */
++    text-decoration: underline; /* 2 */
++    text-decoration: underline dotted; /* 2 */
++  }
++  
++  /**
++   * Add the correct font weight in Chrome, Edge, and Safari.
++   */
++  
++  b,
++  strong {
++    font-weight: bolder;
++  }
++  
++  /**
++   * 1. Correct the inheritance and scaling of font size in all browsers.
++   * 2. Correct the odd `em` font sizing in all browsers.
++   */
++  
++  code,
++  kbd,
++  samp {
++    font-family: monospace, monospace; /* 1 */
++    font-size: 1em; /* 2 */
++  }
++  
++  /**
++   * Add the correct font size in all browsers.
++   */
++  
++  small {
++    font-size: 80%;
++  }
++  
++  /**
++   * Prevent `sub` and `sup` elements from affecting the line height in
++   * all browsers.
++   */
++  
++  sub,
++  sup {
++    font-size: 75%;
++    line-height: 0;
++    position: relative;
++    vertical-align: baseline;
++  }
++  
++  sub {
++    bottom: -0.25em;
++  }
++  
++  sup {
++    top: -0.5em;
++  }
++  
++  /* Embedded content
++     ========================================================================== */
++  
++  /**
++   * Remove the border on images inside links in IE 10.
++   */
++  
++  img {
++    border-style: none;
++  }
++  
++  /* Forms
++     ========================================================================== */
++  
++  /**
++   * 1. Change the font styles in all browsers.
++   * 2. Remove the margin in Firefox and Safari.
++   */
++  
++  button,
++  input,
++  optgroup,
++  select,
++  textarea {
++    font-family: inherit; /* 1 */
++    font-size: 100%; /* 1 */
++    line-height: 1.15; /* 1 */
++    margin: 0; /* 2 */
++  }
++  
++  /**
++   * Show the overflow in IE.
++   * 1. Show the overflow in Edge.
++   */
++  
++  button,
++  input { /* 1 */
++    overflow: visible;
++  }
++  
++  /**
++   * Remove the inheritance of text transform in Edge, Firefox, and IE.
++   * 1. Remove the inheritance of text transform in Firefox.
++   */
++  
++  button,
++  select { /* 1 */
++    text-transform: none;
++  }
++  
++  /**
++   * Correct the inability to style clickable types in iOS and Safari.
++   */
++  
++  button,
++  [type="button"],
++  [type="reset"],
++  [type="submit"] {
++    -webkit-appearance: button;
++  }
++  
++  /**
++   * Remove the inner border and padding in Firefox.
++   */
++  
++  button::-moz-focus-inner,
++  [type="button"]::-moz-focus-inner,
++  [type="reset"]::-moz-focus-inner,
++  [type="submit"]::-moz-focus-inner {
++    border-style: none;
++    padding: 0;
++  }
++  
++  /**
++   * Restore the focus styles unset by the previous rule.
++   */
++  
++  button:-moz-focusring,
++  [type="button"]:-moz-focusring,
++  [type="reset"]:-moz-focusring,
++  [type="submit"]:-moz-focusring {
++    outline: 1px dotted ButtonText;
++  }
++  
++  /**
++   * Correct the padding in Firefox.
++   */
++  
++  fieldset {
++    padding: 0.35em 0.75em 0.625em;
++  }
++  
++  /**
++   * 1. Correct the text wrapping in Edge and IE.
++   * 2. Correct the color inheritance from `fieldset` elements in IE.
++   * 3. Remove the padding so developers are not caught out when they zero out
++   *    `fieldset` elements in all browsers.
++   */
++  
++  legend {
++    box-sizing: border-box; /* 1 */
++    color: inherit; /* 2 */
++    display: table; /* 1 */
++    max-width: 100%; /* 1 */
++    padding: 0; /* 3 */
++    white-space: normal; /* 1 */
++  }
++  
++  /**
++   * Add the correct vertical alignment in Chrome, Firefox, and Opera.
++   */
++  
++  progress {
++    vertical-align: baseline;
++  }
++  
++  /**
++   * Remove the default vertical scrollbar in IE 10+.
++   */
++  
++  textarea {
++    overflow: auto;
++  }
++  
++  /**
++   * 1. Add the correct box sizing in IE 10.
++   * 2. Remove the padding in IE 10.
++   */
++  
++  [type="checkbox"],
++  [type="radio"] {
++    box-sizing: border-box; /* 1 */
++    padding: 0; /* 2 */
++  }
++  
++  /**
++   * Correct the cursor style of increment and decrement buttons in Chrome.
++   */
++  
++  [type="number"]::-webkit-inner-spin-button,
++  [type="number"]::-webkit-outer-spin-button {
++    height: auto;
++  }
++  
++  /**
++   * 1. Correct the odd appearance in Chrome and Safari.
++   * 2. Correct the outline style in Safari.
++   */
++  
++  [type="search"] {
++    -webkit-appearance: textfield; /* 1 */
++    outline-offset: -2px; /* 2 */
++  }
++  
++  /**
++   * Remove the inner padding in Chrome and Safari on macOS.
++   */
++  
++  [type="search"]::-webkit-search-decoration {
++    -webkit-appearance: none;
++  }
++  
++  /**
++   * 1. Correct the inability to style clickable types in iOS and Safari.
++   * 2. Change font properties to `inherit` in Safari.
++   */
++  
++  ::-webkit-file-upload-button {
++    -webkit-appearance: button; /* 1 */
++    font: inherit; /* 2 */
++  }
++  
++  /* Interactive
++     ========================================================================== */
++  
++  /*
++   * Add the correct display in Edge, IE 10+, and Firefox.
++   */
++  
++  details {
++    display: block;
++  }
++  
++  /*
++   * Add the correct display in all browsers.
++   */
++  
++  summary {
++    display: list-item;
++  }
++  
++  /* Misc
++     ========================================================================== */
++  
++  /**
++   * Add the correct display in IE 10+.
++   */
++  
++  template {
++    display: none;
++  }
++  
++  /**
++   * Add the correct display in IE 10.
++   */
++  
++  [hidden] {
++    display: none;
++  }
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"9435bded-579e-43be-ac9e-ee663b5cc043\" name=\"Changes\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"dependabot/bundler/modal/server/ruby/stripe-8.5.0\" />\n      </map>\n    </option>\n    <option name=\"ROOT_SYNC\" value=\"DONT_SYNC\" />\n  </component>\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"TaskManager\">\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 635ded33f84aa5021b58e8ae14d473d5245e9505)
++++ b/.idea/workspace.xml	(date 1684091063000)
+@@ -1,27 +1,264 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AnalysisUIOptions">
++    <option name="ANALYZE_INJECTED_CODE" value="false" />
++    <option name="SCOPE_TYPE" value="10" />
++  </component>
+   <component name="AutoImportSettings">
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="" />
++    <list default="true" id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)">
++      <change afterPath="$PROJECT_DIR$/modal/client/css/global.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/client/css/normalize.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/client/favicon.ico" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/client/index.html" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/client/submitted.html" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Configuration/StripeOptions.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Controllers/IdentityController.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Models/ConfigResponse.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Models/CreatePaymentIntentResponse.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Program.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Properties/launchSettings.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Startup.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/appsettings.Development.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/appsettings.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/server.csproj" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/server.sln" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/go/go.mod" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/go/go.sum" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/go/server.go" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/java/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/java/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/java/src/main/java/com/stripe/sample/Server.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/package.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/src/server.ts" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/tsconfig.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/tslint.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node/package.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node/server.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/.htaccess" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/composer.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/create-verification-session.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/css/base.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/index.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/shared.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/submitted.html" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/utils.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/webhook.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/python/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/python/requirements.txt" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/python/server.py" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/ruby/Gemfile" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/ruby/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/ruby/server.rb" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="PREVIOUS_COMMIT_AUTHORS">
++      <list>
++        <option value="Steve Nagle &lt;webtechnicom@imac-de-guido.local&gt;" />
++      </list>
++    </option>
++    <option name="PUSH_TAGS">
++      <GitPushTagMode>
++        <option name="argument" value="--tags" />
++        <option name="title" value="All" />
++      </GitPushTagMode>
++    </option>
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="dependabot/bundler/modal/server/ruby/stripe-8.5.0" />
++        <entry key="$PROJECT_DIR$" value="stripe.v_13.0.3" />
+       </map>
+     </option>
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+     <option name="ROOT_SYNC" value="DONT_SYNC" />
+   </component>
++  <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/spec/freshsales-redirect_server_spec.rb" root0="FORCE_HIGHLIGHTING" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProjectId" id="2PnHIRyS3RvS6ZY2bz7KggPFOhd" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+   </component>
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/Users/webtechnicom/Downloads/identity-main&quot;,
++    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
++  },
++  &quot;keyToStringList&quot;: {
++    &quot;ChangesTree.GroupingKeys&quot;: [
++      &quot;directory&quot;,
++      &quot;repository&quot;
++    ]
++  }
++}</component>
++  <component name="RunManager" selected="Python tests.Python tests in /stripe.v.13.3">
++    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
++      <module name="identity-main" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="/usr/local/bin/python3.11" />
++      <option name="SDK_NAME" value="Python 3.11" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="false" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="SCRIPT_NAME" value="" />
++      <option name="PARAMETERS" value="" />
++      <option name="SHOW_COMMAND_LINE" value="false" />
++      <option name="EMULATE_TERMINAL" value="false" />
++      <option name="MODULE_MODE" value="false" />
++      <option name="REDIRECT_INPUT" value="false" />
++      <option name="INPUT_FILE" value="" />
++      <method v="2" />
++    </configuration>
++    <configuration default="true" type="Tox" factoryName="Tox">
++      <module name="identity-main" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <option name="SDK_HOME" value="/usr/local/bin/python3.11" />
++      <option name="SDK_NAME" value="Python 3.11" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="false" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <arguments>
++        <array />
++      </arguments>
++      <runOnlyEnvs>
++        <array />
++      </runOnlyEnvs>
++      <method v="2" />
++    </configuration>
++    <configuration name="Docutils Task in Docutils Task in " type="docs" factoryName="Docutils task" nameIsGenerated="true">
++      <module name="identity-main" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <option name="SDK_HOME" value="/usr/local/bin/python3.11" />
++      <option name="SDK_NAME" value="Python 3.11" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="false" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="docutils_input_file" value="" />
++      <option name="docutils_output_file" value="" />
++      <option name="docutils_params" value="" />
++      <option name="docutils_task" value="rst2html" />
++      <option name="docutils_open_in_browser" value="false" />
++      <method v="2" />
++    </configuration>
++    <configuration default="true" type="docs" factoryName="Docutils task">
++      <module name="identity-main" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <option name="SDK_HOME" value="/usr/local/bin/python3.11" />
++      <option name="SDK_NAME" value="Python 3.11" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="false" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="docutils_input_file" value="" />
++      <option name="docutils_output_file" value="" />
++      <option name="docutils_params" value="" />
++      <option name="docutils_task" value="rst2html" />
++      <option name="docutils_open_in_browser" value="false" />
++      <method v="2" />
++    </configuration>
++    <configuration default="true" type="docs" factoryName="Sphinx task">
++      <module name="identity-main" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <option name="SDK_HOME" value="/usr/local/bin/python3.11" />
++      <option name="SDK_NAME" value="Python 3.11" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="false" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="docutils_input_file" value="" />
++      <option name="docutils_output_file" value="" />
++      <option name="docutils_params" value="" />
++      <option name="docutils_task" value="html" />
++      <option name="docutils_open_in_browser" value="false" />
++      <method v="2" />
++    </configuration>
++    <configuration name="Twisted Trial in modal" type="tests" factoryName="Twisted Trial" nameIsGenerated="true">
++      <module name="identity-main" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <option name="SDK_HOME" value="/usr/local/bin/python3.11" />
++      <option name="SDK_NAME" value="Python 3.11" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="false" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="_new_additionalArguments" value="&quot;Stripe.v.13.3&quot;" />
++      <option name="_new_target" value="&quot;$PROJECT_DIR$/modal&quot;" />
++      <option name="_new_targetType" value="&quot;PATH&quot;" />
++      <method v="2" />
++    </configuration>
++    <list>
++      <item itemvalue="Python tests.Python tests in /stripe.v.13.3" />
++      <item itemvalue="Python tests.Twisted Trial in modal" />
++    </list>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++      <created>1684085845792</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1684085845792</updated>
++    </task>
+     <servers />
+   </component>
++  <component name="UpdateCopyrightCheckinHandler">
++    <option name="UPDATE_COPYRIGHT" value="true" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
++    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
++    <MESSAGE value="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++    <option name="LAST_COMMIT_MESSAGE" value="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
++    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
++    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: modal/server/python/requirements.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/python/requirements.txt b/modal/server/python/requirements.txt
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/python/requirements.txt	(date 1668060954000)
+@@ -0,0 +1,3 @@
++Flask==2.2.2
++python-dotenv==0.21.0
++stripe==4.2.0
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"VcsDirectoryMappings\">\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\n    <mapping directory=\"$PROJECT_DIR$/modal\" vcs=\"Git\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 635ded33f84aa5021b58e8ae14d473d5245e9505)
++++ b/.idea/vcs.xml	(date 1684090118000)
+@@ -2,6 +2,7 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/helloworld" vcs="Git" />
+     <mapping directory="$PROJECT_DIR$/modal" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: modal/server/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/README.md b/modal/server/README.md
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/README.md	(date 1668060954000)
+@@ -0,0 +1,15 @@
++# Running the server
++
++We included several RESTful server that each implement the same endpoints and logic.
++Pick the language you are most comfortable in and follow the instructions in the directory on how to run.
++
++# Supported languages
++
++* [JavaScript (Node)](node/README.md)
++* [Python (Flask)](python/README.md)
++* [Ruby (Sinatra)](ruby/README.md)
++* [PHP (Slim)](php/README.md)
++* [Java (Spark)](java/README.md)
++* [Go](go/README.md)
++* [.NET](dotnet/README.md)
++* [TypeScript (Node)](node-typescript/README.md)
+Index: modal/server/go/server.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/go/server.go b/modal/server/go/server.go
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/go/server.go	(date 1668060954000)
+@@ -0,0 +1,195 @@
++package main
++
++import (
++	"bytes"
++	"encoding/json"
++	"fmt"
++	"io"
++	"io/ioutil"
++	"log"
++	"net/http"
++	"os"
++
++	"github.com/joho/godotenv"
++	"github.com/stripe/stripe-go/v72"
++	"github.com/stripe/stripe-go/v72/identity/verificationsession"
++	"github.com/stripe/stripe-go/v72/webhook"
++)
++
++func main() {
++	err := godotenv.Load()
++	if err != nil {
++		log.Fatal("Error loading .env file")
++	}
++
++	stripe.Key = os.Getenv("STRIPE_SECRET_KEY")
++
++	// For sample support and debugging, not required for production:
++	stripe.SetAppInfo(&stripe.AppInfo{
++		Name:    "stripe-samples/identity/modal",
++		Version: "0.0.1",
++		URL:     "https://github.com/stripe-samples",
++	})
++
++	http.Handle("/", http.FileServer(http.Dir(os.Getenv("STATIC_DIR"))))
++	http.HandleFunc("/config", handleConfig)
++	http.HandleFunc("/create-verification-session", handleCreateVerificationSession)
++	http.HandleFunc("/webhook", handleWebhook)
++
++	log.Println("server running at 0.0.0.0:4242")
++	http.ListenAndServe("0.0.0.0:4242", nil)
++}
++
++// ErrorResponseMessage represents the structure of the error
++// object sent in failed responses.
++type ErrorResponseMessage struct {
++	Message string `json:"message"`
++}
++
++// ErrorResponse represents the structure of the error object sent
++// in failed responses.
++type ErrorResponse struct {
++	Error *ErrorResponseMessage `json:"error"`
++}
++
++func handleConfig(w http.ResponseWriter, r *http.Request) {
++	if r.Method != "GET" {
++		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
++		return
++	}
++	writeJSON(w, struct {
++		PublishableKey string `json:"publishableKey"`
++	}{
++		PublishableKey: os.Getenv("STRIPE_PUBLISHABLE_KEY"),
++	})
++}
++
++func handleCreateVerificationSession(w http.ResponseWriter, r *http.Request) {
++	params := &stripe.IdentityVerificationSessionParams{
++		Type: stripe.String("document"),
++
++		// Additional options for configuring the verification session:
++		// Options: &stripe.IdentityVerificationSessionOptionsParams{
++		//   Document: &stripe.IdentityVerificationSessionOptionsDocumentParams{
++		//     // Array of strings of allowed identity document types.
++		//     AllowedTypes: stripe.StringSlice([]string{"driving_license"}), // passport | id_card
++		//
++		//     // Collect an ID number and perform an ID number check with the
++		//     // document’s extracted name and date of birth.
++		//     RequireIDNumber: stripe.Bool(true),
++		//
++		//     // Disable image uploads, identity document images have to be captured
++		//     // using the device’s camera.
++		//     RequireLiveCapture: stripe.Bool(true),
++		//
++		//     // Capture a face image and perform a selfie check comparing a photo
++		//     // ID and a picture of your user’s face.
++		//     RequireMatchingSelfie: stripe.Bool(true),
++		//   }
++		// },
++	}
++	params.AddMetadata("user_id", "{{USER_ID}}")
++	vs, err := verificationsession.New(params)
++	if err != nil {
++		// Try to safely cast a generic error to a stripe.Error so that we can get at
++		// some additional Stripe-specific information about what went wrong.
++		if stripeErr, ok := err.(*stripe.Error); ok {
++			fmt.Printf("Other Stripe error occurred: %v\n", stripeErr.Error())
++			writeJSONErrorMessage(w, stripeErr.Error(), 400)
++		} else {
++			fmt.Printf("Other error occurred: %v\n", err.Error())
++			writeJSONErrorMessage(w, "Unknown server error", 500)
++		}
++
++		return
++	}
++
++	writeJSON(w, struct {
++		ClientSecret string `json:"client_secret"`
++	}{
++		ClientSecret: vs.ClientSecret,
++	})
++}
++
++func handleWebhook(w http.ResponseWriter, r *http.Request) {
++	if r.Method != "POST" {
++		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
++		return
++	}
++	b, err := ioutil.ReadAll(r.Body)
++	if err != nil {
++		http.Error(w, err.Error(), http.StatusBadRequest)
++		log.Printf("ioutil.ReadAll: %v", err)
++		return
++	}
++
++	event, err := webhook.ConstructEvent(b, r.Header.Get("Stripe-Signature"), os.Getenv("STRIPE_WEBHOOK_SECRET"))
++	if err != nil {
++		http.Error(w, err.Error(), http.StatusBadRequest)
++		log.Printf("webhook.ConstructEvent: %v", err)
++		return
++	}
++
++	switch event.Type {
++	case "identity.verification_session.verified":
++		fmt.Fprintf(os.Stdout, "All the verification checks passed\n")
++		var verificationSession stripe.IdentityVerificationSession
++		err := json.Unmarshal(event.Data.Raw, &verificationSession)
++		if err != nil {
++			fmt.Fprintf(os.Stderr, "Error parsing webhook JSON: %v\n", err)
++			w.WriteHeader(http.StatusBadRequest)
++			return
++		}
++	case "identity.verification_session.requires_input":
++		fmt.Fprintf(os.Stdout, "At least one of the verification checks failed\n")
++		var verificationSession stripe.IdentityVerificationSession
++		err := json.Unmarshal(event.Data.Raw, &verificationSession)
++		if err != nil {
++			fmt.Fprintf(os.Stderr, "Error parsing webhook JSON: %v\n", err)
++			w.WriteHeader(http.StatusBadRequest)
++			return
++		}
++		switch verificationSession.LastError.Code {
++		case "document_unverified_other":
++			fmt.Fprintf(os.Stdout, "The document was invalid")
++		case "document_expired":
++			fmt.Fprintf(os.Stdout, "The document was expired")
++		case "document_type_not_supported":
++			fmt.Fprintf(os.Stdout, "The document type was not supported")
++		default:
++			fmt.Fprintf(os.Stdout, "Other document error code")
++		}
++	default:
++		fmt.Fprintf(os.Stdout, "Unhandled event type: %v", event.Type)
++	}
++	writeJSON(w, nil)
++}
++
++func writeJSON(w http.ResponseWriter, v interface{}) {
++	var buf bytes.Buffer
++	if err := json.NewEncoder(&buf).Encode(v); err != nil {
++		http.Error(w, err.Error(), http.StatusInternalServerError)
++		log.Printf("json.NewEncoder.Encode: %v", err)
++		return
++	}
++	w.Header().Set("Content-Type", "application/json")
++	if _, err := io.Copy(w, &buf); err != nil {
++		log.Printf("io.Copy: %v", err)
++		return
++	}
++}
++
++func writeJSONError(w http.ResponseWriter, v interface{}, code int) {
++	w.WriteHeader(code)
++	writeJSON(w, v)
++	return
++}
++
++func writeJSONErrorMessage(w http.ResponseWriter, message string, code int) {
++	resp := &ErrorResponse{
++		Error: &ErrorResponseMessage{
++			Message: message,
++		},
++	}
++	writeJSONError(w, resp, code)
++}
+Index: modal/server/dotnet/Models/CreatePaymentIntentResponse.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/Models/CreatePaymentIntentResponse.cs b/modal/server/dotnet/Models/CreatePaymentIntentResponse.cs
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/Models/CreatePaymentIntentResponse.cs	(date 1668060954000)
+@@ -0,0 +1,8 @@
++using Newtonsoft.Json;
++
++public class CreateVerificationSessionResponse
++{
++  [JsonProperty("client_secret")]
++  public string ClientSecret { get; set; }
++}
++
+Index: modal/server/go/go.sum
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/go/go.sum b/modal/server/go/go.sum
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/go/go.sum	(date 1668060954000)
+@@ -0,0 +1,23 @@
++github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
++github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
++github.com/joho/godotenv v1.4.0 h1:3l4+N6zfMWnkbPEXKng2o2/MR5mSwTrBih4ZEkkz1lg=
++github.com/joho/godotenv v1.4.0/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
++github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
++github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
++github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
++github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H4=
++github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
++github.com/stripe/stripe-go/v72 v72.122.0 h1:eRXWqnEwGny6dneQ5BsxGzUCED5n180u8n665JHlut8=
++github.com/stripe/stripe-go/v72 v72.122.0/go.mod h1:QwqJQtduHubZht9mek5sds9CtQcKFdsykV9ZepRWwo0=
++golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
++golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e h1:3G+cUijn7XD+S4eJFddp53Pv7+slrESplyjG25HgL+k=
++golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e/go.mod h1:qpuaurCH72eLCgpAm/N6yyVIVM9cpaDIP3A8BGJEC5A=
++golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
++golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
++golang.org/x/text v0.3.0 h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
++golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
++gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
++gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
++gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
++gopkg.in/yaml.v2 v2.2.8 h1:obN1ZagJSUGI0Ek/LBmuj4SNLPfIny3KsKFopxRdj10=
++gopkg.in/yaml.v2 v2.2.8/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
+Index: modal/server/dotnet/Models/ConfigResponse.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/Models/ConfigResponse.cs b/modal/server/dotnet/Models/ConfigResponse.cs
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/Models/ConfigResponse.cs	(date 1668060954000)
+@@ -0,0 +1,7 @@
++using Newtonsoft.Json;
++
++public class ConfigResponse
++{
++    [JsonProperty("publishableKey")]
++    public string PublishableKey { get; set; }
++}
+Index: modal/server/dotnet/Properties/launchSettings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/Properties/launchSettings.json b/modal/server/dotnet/Properties/launchSettings.json
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/Properties/launchSettings.json	(date 1668060954000)
+@@ -0,0 +1,26 @@
++{
++  "iisSettings": {
++    "windowsAuthentication": false,
++    "anonymousAuthentication": true,
++    "iisExpress": {
++      "applicationUrl": "http://localhost:4242"
++    }
++  },
++  "profiles": {
++    "IIS Express": {
++      "commandName": "IISExpress",
++      "launchBrowser": true,
++      "environmentVariables": {
++        "ASPNETCORE_ENVIRONMENT": "Development"
++      }
++    },
++    "server": {
++      "commandName": "Project",
++      "launchBrowser": true,
++      "applicationUrl": "http://localhost:4242",
++      "environmentVariables": {
++        "ASPNETCORE_ENVIRONMENT": "Development"
++      }
++    }
++  }
++}
+Index: modal/server/go/go.mod
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/go/go.mod b/modal/server/go/go.mod
+new file mode 100755
+--- /dev/null	(date 1683484789000)
++++ b/modal/server/go/go.mod	(date 1683484789000)
+@@ -0,0 +1,9 @@
++module stripe-sample
++
++        go 1.15
++
++        require (
++        github.com/joho/godotenv v1.4.0
++        github.com/stripe/stripe-go/v72 v72.122.0
++        gopkg.in/yaml.v2 v2.2.8 // indirect
++        )
+Index: modal/server/php/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/README.md b/modal/server/php/README.md
+new file mode 100755
+--- /dev/null	(date 1683484789000)
++++ b/modal/server/php/README.md	(date 1683484789000)
+@@ -0,0 +1,47 @@
++# Your sample name
++
++An implementation in PHP
++
++## Requirements
++
++- PHP
++
++## How to run
++
++1. Confirm `.env` configuration
++
++Ensure the API keys are configured in `.env` in this directory. It should include the following keys:
++
++```yaml
++# Stripe API keys - see https://stripe.com/docs/development/quickstart#api-keys
++STRIPE_PUBLISHABLE_KEY=pk_test...
++STRIPE_SECRET_KEY=sk_test...
++
++# Required to verify signatures in the webhook handler.
++# See README on how to use the Stripe CLI to test webhooks
++STRIPE_WEBHOOK_SECRET=whsec_...
++
++# Path to front-end implementation. Note: PHP has it's own front end implementation.
++STATIC_DIR=../../client/html
++```
++
++2. Run composer to set up dependencies
++
++```
++composer install
++```
++
++3. Copy .env.example to .env and replace with your Stripe API keys
++
++```
++cp ../../.env.example .env
++```
++
++4. Run the server locally
++
++```
++cd public
++php -S 127.0.0.1:4242
++```
++
++4. Go to [localhost:4242](http://localhost:4242)
+Index: modal/server/dotnet/Controllers/IdentityController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/Controllers/IdentityController.cs b/modal/server/dotnet/Controllers/IdentityController.cs
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/Controllers/IdentityController.cs	(date 1668060954000)
+@@ -0,0 +1,103 @@
++using System;
++using System.Collections.Generic;
++using System.IO;
++using System.Threading.Tasks;
++using Microsoft.AspNetCore.Mvc;
++using Microsoft.Extensions.Options;
++using Stripe;
++using Stripe.Identity;
++
++namespace server.Controllers
++{
++    public class IdentityController : Controller
++    {
++        public readonly IOptions<StripeOptions> options;
++        private readonly IStripeClient client;
++
++        public IdentityController(IOptions<StripeOptions> options)
++        {
++            this.options = options;
++            this.client = new StripeClient(this.options.Value.SecretKey);
++        }
++
++        [HttpGet("config")]
++        public ConfigResponse GetConfig()
++        {
++            // return json: publishableKey (.env)
++            return new ConfigResponse
++            {
++                PublishableKey = this.options.Value.PublishableKey,
++            };
++        }
++
++        [HttpPost("create-verification-session")]
++        public async Task<IActionResult> CreateVerificationSession()
++        {
++          var options = new VerificationSessionCreateOptions
++          {
++            Type = "document",
++          };
++
++          var service = new VerificationSessionService(this.client);
++
++          try
++          {
++            var verificationSession = await service.CreateAsync(options);
++
++            return Ok(new CreateVerificationSessionResponse
++            {
++                ClientSecret = verificationSession.ClientSecret,
++            });
++          }
++          catch (StripeException e)
++          {
++            return BadRequest(new { error = new { message = e.StripeError.Message}});
++          }
++          catch (System.Exception)
++          {
++            return BadRequest(new { error = new { message = "unknown failure: 500"}});
++          }
++        }
++
++        [HttpPost("webhook")]
++        public async Task<IActionResult> Webhook()
++        {
++            var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
++            Event stripeEvent;
++            try
++            {
++                stripeEvent = EventUtility.ConstructEvent(
++                    json,
++                    Request.Headers["Stripe-Signature"],
++                    this.options.Value.WebhookSecret
++                );
++                Console.WriteLine($"Webhook notification with type: {stripeEvent.Type} found for {stripeEvent.Id}");
++            }
++            catch (Exception e)
++            {
++                Console.WriteLine($"Something failed {e}");
++                return BadRequest();
++            }
++
++
++            if (stripeEvent.Type == Events.IdentityVerificationSessionVerified) {
++              var verificationSession = stripeEvent.Data.Object as VerificationSession;
++              // All the verification checks passed
++
++            } else if (stripeEvent.Type == Events.IdentityVerificationSessionRequiresInput) {
++              var verificationSession = stripeEvent.Data.Object as VerificationSession;
++              if (verificationSession.LastError.Code == "document_unverified_other") {
++                // The document was invalid
++              } else if (verificationSession.LastError.Code == "document_expired") {
++                // The document was expired
++              } else if (verificationSession.LastError.Code == "document_type_not_supported") {
++                // The document type was not supported
++              } else {
++                // ...
++              }
++            }
++
++            return Ok();
++        }
++    }
++}
+Index: modal/server/dotnet/Configuration/StripeOptions.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/dotnet/Configuration/StripeOptions.cs b/modal/server/dotnet/Configuration/StripeOptions.cs
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/dotnet/Configuration/StripeOptions.cs	(date 1668060954000)
+@@ -0,0 +1,8 @@
++using System.Collections.Generic;
++
++public class StripeOptions
++{
++    public string PublishableKey { get; set; }
++    public string SecretKey { get; set; }
++    public string WebhookSecret { get; set; }
++}
+Index: modal/server/python/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/python/README.md b/modal/server/python/README.md
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/python/README.md	(date 1668060954000)
+@@ -0,0 +1,48 @@
++# Name of sample
++
++## Requirements## Requirements
++
++- Python 3
++- [Configured .env file](../README.md)
++
++## How to run
++
++1. Create and activate a new virtual environment
++
++**MacOS / Unix**
++
++```
++python3 -m venv env
++source env/bin/activate
++```
++
++**Windows (PowerShell)**
++
++```
++python3 -m venv env
++.\env\Scripts\activate.bat
++```
++
++2. Install dependencies
++
++```
++pip install -r requirements.txt
++```
++
++3. Export and run the application
++
++**MacOS / Unix**
++
++```
++export FLASK_APP=server.py
++python3 -m flask run --port=4242
++```
++
++**Windows (PowerShell)**
++
++```
++$env:FLASK_APP=“server.py"
++python3 -m flask run --port=4242
++```
++
++4. Go to `localhost:4242` in your browser to see the demo
+Index: modal/server/php/composer.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/composer.json b/modal/server/php/composer.json
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/php/composer.json	(date 1668060954000)
+@@ -0,0 +1,9 @@
++{
++  "require": {
++    "stripe/stripe-php": "^9.1",
++    "vlucas/phpdotenv": "^5.3"
++  },
++  "scripts": {
++    "start": "cd public && php -S 0.0.0.0:4242"
++  }
++}
+Index: modal/server/python/server.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/python/server.py b/modal/server/python/server.py
+new file mode 100755
+--- /dev/null	(date 1683484799000)
++++ b/modal/server/python/server.py	(date 1683484799000)
+@@ -0,0 +1,93 @@
++#! /usr/bin/env python3.6
++import json
++import os
++
++import stripe
++from dotenv import load_dotenv, find_dotenv
++from flask import Flask, render_template, jsonify, request
++
++load_dotenv(find_dotenv())
++
++# For sample support and debugging, not required for production:
++stripe.set_app_info(
++    'stripe-samples/identity/modal',
++    version='0.0.1',
++    url='https://github.com/stripe-samples')
++
++stripe.api_version = '2020-08-27'
++stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
++
++static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
++app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
++
++
++@app.route('/', methods=['GET'])
++def get_root():
++    return render_template('index.html')
++
++
++@app.route('/config', methods=['GET'])
++def get_config():
++    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
++
++
++@app.route('/create-verification-session', methods=['POST'])
++def create_verification_session():
++    try:
++        verification_session = stripe.identity.VerificationSession.create(
++            type='document',
++            metadata={
++                'user_id': '{{USER_ID}}',
++            }
++        )
++        return jsonify({'client_secret': verification_session.client_secret})
++    except stripe.error.StripeError as e:
++        return jsonify({'error': {'message': str(e)}}), 400
++    except Exception as e:
++        return jsonify({'error': {'message': str(e)}}), 400
++
++
++@app.route('/webhook', methods=['POST'])
++def webhook_received():
++    # You can use webhooks to receive information about asynchronous payment events.
++    # For more about our webhook events check out https://stripe.com/docs/webhooks.
++    webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
++    request_data = json.loads(request.data)
++
++    if webhook_secret:
++        # Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
++        signature = request.headers.get('stripe-signature')
++        try:
++            event = stripe.Webhook.construct_event(
++                payload=request.data, sig_header=signature, secret=webhook_secret)
++            data = event['data']
++        except Exception as e:
++            return e
++        # Get the type of webhook event sent - used to check the status of PaymentIntents.
++        event_type = event['type']
++    else:
++        data = request_data['data']
++        event_type = request_data['type']
++    data_object = data['object']
++
++    if event['type'] == 'identity.verification_session.verified':
++        print("All the verification checks passed")
++        verification_session = data_object
++
++    elif event['type'] == 'identity.verification_session.requires_input':
++        print("At least one verification check failed")
++        verification_session = data_object
++
++        if verification_session.last_error.code == 'document_unverified_other':
++            print("The document was invalid")
++        elif verification_session.last_error.code == 'document_expired':
++            print("The document was expired")
++        elif verification_session.last_error.code == 'document_type_not_suported':
++            print("The document type was not supported")
++        else:
++            print("other error code")
++    return jsonify({'status': 'success'})
++
++
++if __name__ == '__main__':
++    app.run(port=4242, debug=True)
+Index: modal/server/php/.htaccess
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/.htaccess b/modal/server/php/.htaccess
+new file mode 100755
+--- /dev/null	(date 1683486075000)
++++ b/modal/server/php/.htaccess	(date 1683486075000)
+@@ -0,0 +1,51 @@
++RewriteEngine On
++
++RewriteCond %{REQUEST_FILENAME} !-d
++RewriteCond %{REQUEST_FILENAME} !-f
++RewriteRule ^ index.php [QSA,L] 
++from .request import _request
++from .freshsales_exception import FreshsalesException
++
++class FreshsalesAnalytics(object):
++    def __init__(self, domain=None, app_token=None):
++        self.domain = domain
++        self.app_token = app_token
++
++    def identify(self, identifier=None, properties={}):
++        data = {}
++        data['identifier'] = identifier
++        data['visitor'] = properties
++        self._post('visitors', data)
++
++    def trackEvent(self, identifier=None, event=None, properties={}):
++        properties['name'] = event
++        data = {}
++        data['identifier'] = identifier
++        data['event'] = properties
++        self._post('events', data)
++
++    def trackPageView(self, identifier=None, url=None):
++        data = {}
++        data['identifier'] = identifier
++        data['page_view'] = { 'url': url }
++        self._post('page_views', data)
++
++    def _post(self, action, data):
++        if self._valid(action, data):
++            data['application_token'] = self.app_token
++            data['sdk'] = "python"
++            path = self.domain + '/track/' + action
++            _request(path, data)
++
++    def _valid(self, action, data):
++        if not self.domain or not self.app_token:
++            raise  FreshsalesException("Either Freshsales domain / appToken "
++                   + "you provided during the initialization of FreshsalesAnalytics is empty.")
++        elif not data['identifier']:
++            raise  FreshsalesException("Identifier passed is empty")
++        elif action == 'page_views' and not data['page_view']['url']:
++            raise  FreshsalesException("Page URL passed to trackPageView method is empty.")
++        elif action == 'events' and not data['event']['name']:
++            raise  FreshsalesException("Event Name passed to trackEvent method is empty.")
++
++        return True
+Index: modal/server/node-typescript/tsconfig.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/node-typescript/tsconfig.json b/modal/server/node-typescript/tsconfig.json
+new file mode 100755
+--- /dev/null	(date 1683484789000)
++++ b/modal/server/node-typescript/tsconfig.json	(date 1683484789000)
+@@ -0,0 +1,20 @@
++{
++  "compilerOptions": {
++    "module": "commonjs",
++    "esModuleInterop": true,
++    "target": "es6",
++    "noImplicitAny": true,
++    "moduleResolution": "node",
++    "sourceMap": true,
++    "outDir": "dist",
++    "baseUrl": ".",
++    "paths": {
++      "*": [
++        "node_modules/*"
++      ]
++    }
++  },
++  "include": [
++    "src/**/*"
++  ]
++}
+Index: modal/server/php/public/submitted.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/public/submitted.html b/modal/server/php/public/submitted.html
+new file mode 100755
+--- /dev/null	(date 1683484794000)
++++ b/modal/server/php/public/submitted.html	(date 1683484794000)
+@@ -0,0 +1,23 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="utf-8"/>
++    <title>Identity verification submitted</title>
++    <link href="css/normalize.css" rel="stylesheet"/>
++    <link href="css/global.css" rel="stylesheet"/>
++</head>
++<body>
++<div class="sr-root">
++    <div class="sr-main">
++        <section class="container">
++            <div>
++                <h1>Thanks for submitting your identity document.</h1>
++                <p>We are processing your verification.</p>
++
++                <a href="/">Restart demo</a>
++            </div>
++        </section>
++    </div>
++</div>
++</body>
++</html>
+Index: modal/server/node-typescript/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/node-typescript/package.json b/modal/server/node-typescript/package.json
+new file mode 100644
+--- /dev/null	(date 1684090118000)
++++ b/modal/server/node-typescript/package.json	(date 1684090118000)
+@@ -0,0 +1,27 @@
++{
++  "name": "stripe-sample-demo",
++  "version": "1.0.0",
++  "description": "A Stripe demo",
++  "main": "dist/server.js",
++  "scripts": {
++    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
++    "build": "tsc",
++    "prestart": "npm run build",
++    "start": "node .",
++    "test": "echo \"Error: no test specified\" && exit 1"
++  },
++  "author": "stripe-demos",
++  "license": "ISC",
++  "dependencies": {
++    "body-parser": "^1.19.0",
++    "dotenv": "latest",
++    "express": "^4.17.1",
++    "stripe": "10.17.0"
++  },
++  "devDependencies": {
++    "@types/express": "^4.17.2",
++    "@types/node": "^20.1.2",
++    "tslint": "^6.1.3",
++    "typescript": "^4.3.5"
++  }
++}
+Index: modal/server/php/public/create-verification-session.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/public/create-verification-session.php b/modal/server/php/public/create-verification-session.php
+new file mode 100755
+--- /dev/null	(date 1683123485000)
++++ b/modal/server/php/public/create-verification-session.php	(date 1683123485000)
+@@ -0,0 +1,18 @@
++<?php
++
++require './shared.php';
++
++if ($_SERVER['REQUEST_METHOD'] != 'POST') {
++  echo 'Invalid request';
++  exit;
++}
++
++$verification_session = $stripe->identity->verificationSessions->create([
++  'type' => 'document',
++  'metadata' => [
++    'user_id' => '{{USER_ID}}',
++  ]
++]);
++
++echo json_encode(['client_secret' => $verification_session->client_secret]);
++
+Index: modal/server/node-typescript/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/node-typescript/README.md b/modal/server/node-typescript/README.md
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/node-typescript/README.md	(date 1668060954000)
+@@ -0,0 +1,24 @@
++# Name of sample
++
++A TypeScript [Express server](http://expressjs.com) implementation
++
++## Requirements
++
++- Node v10+
++- [Configured .env file](../README.md)
++
++## How to run
++
++1. Install dependencies
++
++```
++npm install
++```
++
++2. Run the application
++
++```
++npm start
++```
++
++3. Go to `localhost:4242` to see the demo
+Index: modal/server/php/public/index.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/public/index.php b/modal/server/php/public/index.php
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/php/public/index.php	(date 1668060954000)
+@@ -0,0 +1,61 @@
++<?php
++require '../vendor/autoload.php';
++
++$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
++$dotenv->load();
++?>
++<!DOCTYPE html>
++<html lang="en">
++  <head>
++    <meta charset="utf-8" />
++    <title>Stripe Identity Sample</title>
++    <meta name="description" content="A demo of Stripe Identity" />
++    <script src="https://js.stripe.com/v3/"></script>
++  </head>
++  <body>
++    <div class="sr-root">
++      <div class="sr-main">
++        <section class="container">
++          <div>
++            <h1>Verify your identity to book</h1>
++            <h4>Get ready to take a photo of your ID and a selfie</h4>
++
++            <button id="verify-button">Verify me</button>
++          </div>
++        </section>
++      </div>
++    </div>
++    <script type="text/javascript">
++      document.addEventListener('DOMContentLoaded', async () => {
++
++        // Set your publishable key: remember to change this to your live publishable key in production
++        // Find your keys here: https://dashboard.stripe.com/apikeys
++        const stripe = Stripe('<?= $_ENV["STRIPE_PUBLISHABLE_KEY"] ?>');
++
++        var verifyButton = document.getElementById('verify-button');
++        verifyButton.addEventListener('click', async () => {
++          // Get the VerificationSession client secret using the server-side
++          // endpoint you created in step 3.
++
++          try {
++
++            // Create the VerificationSession on the server.
++            const {client_secret} = await fetch('/create-verification-session.php', {
++              method: 'POST',
++            }).then(r => r.json())
++
++            // Open the modal on the client.
++            const {error} = await stripe.verifyIdentity(client_secret);
++            if(!error) {
++              window.location.href = '/submitted.html';
++            } else {
++              alert(error.message);
++            }
++          } catch(e) {
++            alert(e.message);
++          }
++        })
++      })
++    </script>
++  </body>
++</html>
+Index: modal/server/php/public/shared.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/public/shared.php b/modal/server/php/public/shared.php
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/php/public/shared.php	(date 1668060954000)
+@@ -0,0 +1,61 @@
++<?php
++
++require '../vendor/autoload.php';
++
++// If the .env file was not configured properly, display a helpful message.
++if(!file_exists('../.env')) {
++  ?>
++  <h1>Missing <code>.env</code></h1>
++
++  <p>Make a copy of <code>.env.example</code>, place it in the same directory as composer.json, and name it <code>.env</code>, then populate the variables.</p>
++  <p>It should look something like the following, but contain your <a href='https://dashboard.stripe.com/test/apikeys'>API keys</a>:</p>
++  <pre>STRIPE_PUBLISHABLE_KEY=pk_test...
++STRIPE_SECRET_KEY=sk_test...
++STRIPE_WEBHOOK_SECRET=whsec_...
++DOMAIN=http://localhost:4242</pre>
++  <hr>
++
++  <p>You can use this command to get started:</p>
++  <pre>cp .env.example .env</pre>
++
++  <?php
++  exit;
++}
++
++// Load `.env` file from the server directory so that
++// environment variables are available in $_ENV or via
++// getenv().
++$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
++$dotenv->load();
++
++// Make sure the configuration file is good.
++if (!$_ENV['STRIPE_SECRET_KEY']) {
++  ?>
++
++  <h1>Invalid <code>.env</code></h1>
++  <p>Make a copy of <code>.env.example</code> and name it <code>.env</code>, then populate the variables.</p>
++  <p>It should look something like the following, but contain your <a href='https://dashboard.stripe.com/test/apikeys'>API keys</a>:</p>
++  <pre>STRIPE_PUBLISHABLE_KEY=pk_test...
++STRIPE_SECRET_KEY=sk_test...
++STRIPE_WEBHOOK_SECRET=whsec_...
++DOMAIN=http://localhost:4242</pre>
++  <hr>
++
++  <p>You can use this command to get started:</p>
++  <pre>cp .env.example .env</pre>
++
++  <?php
++  exit;
++}
++
++// For sample support and debugging. Not required for production:
++\Stripe\Stripe::setAppInfo(
++  "stripe-samples/identity/modal",
++  "0.0.2",
++  "https://github.com/stripe-samples"
++);
++
++$stripe = new \Stripe\StripeClient([
++  'api_key' => $_ENV['STRIPE_SECRET_KEY'],
++  'stripe_version' => '2020-08-27',
++]);
+Index: modal/server/node-typescript/tslint.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/node-typescript/tslint.json b/modal/server/node-typescript/tslint.json
+new file mode 100755
+--- /dev/null	(date 1683484788000)
++++ b/modal/server/node-typescript/tslint.json	(date 1683484788000)
+@@ -0,0 +1,18 @@
++{
++  "defaultSeverity": "error",
++  "extends": [
++    "tslint:recommended"
++  ],
++  "jsRules": {},
++  "rules": {
++    "trailing-comma": [
++      false
++    ],
++    "no-console": false,
++    "quotemark": [
++      true,
++      "single"
++    ]
++  },
++  "rulesDirectory": []
++}
+Index: modal/server/php/public/webhook.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/public/webhook.php b/modal/server/php/public/webhook.php
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/php/public/webhook.php	(date 1668060954000)
+@@ -0,0 +1,44 @@
++<?php
++
++require_once 'shared.php';
++header('Content-Type: application/json');
++
++$input = file_get_contents('php://input');
++$body = json_decode($input);
++$event = null;
++
++try {
++  // Make sure the event is coming from Stripe by checking the signature header
++  $event = \Stripe\Webhook::constructEvent(
++    $input,
++    $_SERVER['HTTP_STRIPE_SIGNATURE'],
++    $_ENV['STRIPE_WEBHOOK_SECRET']
++  );
++}
++catch (Exception $e) {
++  http_response_code(403);
++  echo json_encode([ 'error' => $e->getMessage() ]);
++  exit;
++}
++
++
++if ($event->type == 'identity.verification_session.verified') {
++  // All the verification checks passed
++  $verification_session = event->data->object;
++} elseif ($event->type == 'identity.verification_session.requires_input') {
++  # At least one of the verification checks failed
++  $verification_session = event->data->object;
++
++  if ($verification_session->last_error->code == 'document_unverified_other') {
++    # The document was invalid
++  } elseif ($verification_session->last_error->code == 'document_expired') {
++    # The document was expired
++  } elseif $verification_session->last_error->code == 'document_type_not_suported') {
++    # The document type was not supported
++  } else {
++    # ...
++  }
++}
++
++
++echo json_encode(['status' => 'success']);
+Index: modal/server/node-typescript/src/server.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/node-typescript/src/server.ts b/modal/server/node-typescript/src/server.ts
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/node-typescript/src/server.ts	(date 1668060954000)
+@@ -0,0 +1,163 @@
++import env from 'dotenv';
++import path from 'path';
++// Replace if using a different env file or config.
++env.config({ path: './.env' });
++
++import bodyParser from 'body-parser';
++import express from 'express';
++
++import Stripe from 'stripe';
++const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
++  apiVersion: '2022-08-01',
++  appInfo: { // For sample support and debugging, not required for production:
++    name: 'stripe-samples/identity/modal',
++    url: 'https://github.com/stripe-samples',
++    version: '0.0.1',
++  },
++  typescript: true,
++});
++
++const app = express();
++const resolve = path.resolve;
++
++app.use(express.static(process.env.STATIC_DIR));
++app.use(
++  (
++    req: express.Request,
++    res: express.Response,
++    next: express.NextFunction
++  ): void => {
++    if (req.originalUrl === '/webhook') {
++      next();
++    } else {
++      bodyParser.json()(req, res, next);
++    }
++  }
++);
++
++app.get('/', (_: express.Request, res: express.Response): void => {
++  // Serve checkout page.
++  const indexPath = resolve(process.env.STATIC_DIR + '/index.html');
++  res.sendFile(indexPath);
++});
++
++app.get('/config', (_: express.Request, res: express.Response): void => {
++  // Serve checkout page.
++  res.send({
++    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
++  });
++});
++
++app.post(
++  '/create-verification-session',
++  async (req: express.Request, res: express.Response): Promise<void> => {
++    try {
++      const verificationSession: Stripe.Identity.VerificationSession = await stripe.identity.verificationSessions.create({
++        type: 'document',
++        metadata: {
++          user_id: '{{USER_ID}}',
++        }
++        // Additional options for configuring the verification session:
++        // options: {
++        //   document: {
++        //     # Array of strings of allowed identity document types.
++        //     allowed_types: ['driving_license'], # passport | id_card
++        //
++        //     # Collect an ID number and perform an ID number check with the
++        //     # document’s extracted name and date of birth.
++        //     require_id_number: true,
++        //
++        //     # Disable image uploads, identity document images have to be captured
++        //     # using the device’s camera.
++        //     require_live_capture: true,
++        //
++        //     # Capture a face image and perform a selfie check comparing a photo
++        //     # ID and a picture of your user’s face.
++        //     require_matching_selfie: true,
++        //   }
++        // },
++      });
++
++      // Send publishable key and PaymentIntent client_secret to client.
++      res.send({
++        client_secret: verificationSession.client_secret,
++      });
++    } catch (e) {
++      console.log(e);
++      res.status(400).send({
++        error: {
++          message: e.message,
++        }
++      });
++    }
++  }
++);
++
++// Expose a endpoint as a webhook handler for asynchronous events.
++// Configure your webhook in the stripe developer dashboard:
++// https://dashboard.stripe.com/test/webhooks
++app.post(
++  '/webhook',
++  // Use body-parser to retrieve the raw body as a buffer.
++  bodyParser.raw({ type: 'application/json' }),
++  async (req: express.Request, res: express.Response): Promise<void> => {
++    // Retrieve the event by verifying the signature using the raw body and secret.
++    let event: Stripe.Event;
++
++    try {
++      event = stripe.webhooks.constructEvent(
++        req.body,
++        req.headers['stripe-signature'],
++        process.env.STRIPE_WEBHOOK_SECRET
++      );
++    } catch (err) {
++      console.log(`⚠️  Webhook signature verification failed.`);
++      res.sendStatus(400);
++      return;
++    }
++
++    // Extract the data from the event.
++    const data: Stripe.Event.Data = event.data;
++    const eventType: string = event.type;
++
++    // Successfully constructed event
++    switch (eventType) {
++      case 'identity.verification_session.verified': {
++        // All the verification checks passed
++        const verificationSession: Stripe.Identity.VerificationSession = event.data.object as Stripe.Identity.VerificationSession;
++        break;
++      }
++      case 'identity.verification_session.requires_input': {
++        // At least one of the verification checks failed
++        const verificationSession: Stripe.Identity.VerificationSession = event.data.object as Stripe.Identity.VerificationSession;
++
++        console.log('Verification check failed: ' + verificationSession.last_error.reason);
++
++        // Handle specific failure reasons
++        switch (verificationSession.last_error.code) {
++          case 'document_unverified_other': {
++            // The document was invalid
++            break;
++          }
++          case 'document_expired': {
++            // The document was expired
++            break;
++          }
++          case 'document_type_not_supported': {
++            // document type not supported
++            break;
++          }
++          default: {
++            // ...
++          }
++        }
++      }
++    }
++
++    res.sendStatus(200);
++  }
++);
++
++app.listen(4242, (): void =>
++  console.log(`Node server listening on port ${4242}!`)
++);
+Index: modal/server/php/public/utils.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/modal/server/php/public/utils.js b/modal/server/php/public/utils.js
+new file mode 100755
+--- /dev/null	(date 1668060954000)
++++ b/modal/server/php/public/utils.js	(date 1668060954000)
+@@ -0,0 +1,17 @@
++// Helper for displaying status messages.
++const addMessage = (message) => {
++  const messagesDiv = document.querySelector('#messages');
++  messagesDiv.style.display = 'block';
++  const messageWithLinks = addDashboardLinks(message);
++  messagesDiv.innerHTML += `> ${messageWithLinks}<br>`;
++  console.log(`Debug: ${message}`);
++};
++
++// Adds links for known Stripe objects to the Stripe dashboard.
++const addDashboardLinks = (message) => {
++  const piDashboardBase = 'https://dashboard.stripe.com/test/payments';
++  return message.replace(
++    /(pi_(\S*)\b)/g,
++    `<a href="${piDashboardBase}/$1" target="_blank">$1</a>`
++  );
++};
