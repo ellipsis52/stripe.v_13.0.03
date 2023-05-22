@@ -1,0 +1,149 @@
+Index: .idea/runConfigurations/Python_tests_in__stripe_v_13_3.xml
+===================================================================
+diff --git a/.idea/runConfigurations/Python_tests_in__stripe_v_13_3.xml b/.idea/runConfigurations/Python_installe_production_mode__stripe_v_13_3.xml
+rename from .idea/runConfigurations/Python_tests_in__stripe_v_13_3.xml
+rename to .idea/runConfigurations/Python_installe_production_mode__stripe_v_13_3.xml
+--- a/.idea/runConfigurations/Python_tests_in__stripe_v_13_3.xml	
++++ b/.idea/runConfigurations/Python_installe_production_mode__stripe_v_13_3.xml	
+@@ -1,9 +1,9 @@
+ <component name="ProjectRunConfigurationManager">
+-  <configuration default="false" name="Python tests in /stripe.v.13.3" type="tests" factoryName="Autodetect" singleton="false" show_console_on_std_err="true" show_console_on_std_out="true">
+-    <output_file path="$PROJECT_DIR$/env/include" is_save="true" />
++  <configuration default="false" name="Python installe production mode /stripe.v.13.3" type="tests" factoryName="Autodetect" singleton="false" show_console_on_std_err="true" show_console_on_std_out="true">
++    <output_file path="$PROJECT_DIR$" is_save="true" />
+     <log_file alias="https://webtechnicom.net" path="https://stripe.com" show_all="true" />
+     <module name="identity-main" />
+-    <option name="INTERPRETER_OPTIONS" value="" />
++    <option name="INTERPRETER_OPTIONS" value="$PROJECT_DIR$/env" />
+     <option name="PARENT_ENVS" value="true" />
+     <option name="SDK_HOME" value="/usr/local/bin/python3.11" />
+     <option name="SDK_NAME" value="Python 3.11" />
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"9435bded-579e-43be-ac9e-ee663b5cc043\" name=\"Changes\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"dependabot/bundler/modal/server/ruby/stripe-8.5.0\" />\n      </map>\n    </option>\n    <option name=\"ROOT_SYNC\" value=\"DONT_SYNC\" />\n  </component>\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"TaskManager\">\n    <servers />\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,24 +4,101 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="" />
++    <list default="true" id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)">
++      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Python_tests_in__stripe_v_13_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Python_tests_in__stripe_v_13_3.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="PUSH_AUTO_UPDATE" value="true" />
++    <option name="PUSH_TAGS">
++      <GitPushTagMode>
++        <option name="argument" value="--tags" />
++        <option name="title" value="All" />
++      </GitPushTagMode>
++    </option>
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+         <entry key="$PROJECT_DIR$" value="dependabot/bundler/modal/server/ruby/stripe-8.5.0" />
+       </map>
+     </option>
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+     <option name="ROOT_SYNC" value="DONT_SYNC" />
+   </component>
++  <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/spec/freshsales-redirect_server_spec.rb" root0="FORCE_HIGHLIGHTING" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProjectId" id="2Po18cXUX7gA6ARI664ztJS4cEd" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+   </component>
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Git.Branch.Popup.ShowAllRemotes": "true",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "last_opened_file_path": "/Users/webtechnicom/Downloads/identity-main",
++    "run.code.analysis.last.selected.profile": "aDefault"
++  }
++}]]></component>
++  <component name="RunDashboard">
++    <option name="configurationTypes">
++      <set>
++        <option value="CompoundRunConfigurationType" />
++      </set>
++    </option>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
++    <task id="LOCAL-00001" summary="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)">
++      <created>1684091166175</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1684091166175</updated>
++    </task>
++    <task id="LOCAL-00002" summary="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)">
++      <created>1684091197145</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1684091197145</updated>
++    </task>
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++      <created>1684108550901</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1684108550901</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++    <option name="LAST_COMMIT_MESSAGE" value="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"VcsDirectoryMappings\">\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\n    <mapping directory=\"$PROJECT_DIR$/modal\" vcs=\"Git\" />\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	
++++ b/.idea/vcs.xml	
+@@ -2,6 +2,7 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/helloworld" vcs="Git" />
+     <mapping directory="$PROJECT_DIR$/modal" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
