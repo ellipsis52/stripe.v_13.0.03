@@ -1,0 +1,1 @@
+Y = clear submitted biometric control confirmation session

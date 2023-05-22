@@ -1,0 +1,51 @@
+Script started on Wed May 17 19:08:08 2023
+command: located within.
+ the user. You can do this by issuing the following PowerShell
+command:
+
+PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+For more information on Execution Policies: 
+https://go.microsoft.com/fwlink/?LinkID=135170
+
+#>
+Param(
+    [Parameter(Mandatory = $false)]
+    [String]
+    $VenvDir,
+    [Parameter(Mandatory = $false)]
+    [String]
+    $Prompt
+)
+
+<# Function declarations --------------------------------------------------- #>
+
+<#
+.Synopsis
+Remove all shell session elements added by the Activate script, including the
+addition of the virtual environment's Python executable from the beginning of
+the PATH variable.
+
+.Parameter NonDestructive
+If present, do not remove this function from the global namespace for the
+session.
+
+#>
+function global:deactivate ([switch]$NonDestructive) {
+    # Revert to original values
+
+    # The prior prompt:
+    if (Test-Path -Path Function:_OLD_VIRTUAL_PROMPT) {
+        Copy-Item -Path Function:_OLD_VIRTUAL_PROMPT -De
+Script done on Wed May 17 19:08:08 2023
+
+
+3996=Y
+, = 785
+Y=111x36=3996
+Y=222x18=3996
+Y=333x12=3996
+Y=444x9=3996
+Y=666x6=3996
+Y=999X4=3996
+N=n,o,n=7,8,5
