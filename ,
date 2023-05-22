@@ -1,0 +1,4828 @@
+(base) iMac-de-Guido:identity-main webtechnicom$ python3 -m venv env
+(base) iMac-de-Guido:identity-main webtechnicom$ source env/bin/activate
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ pip install -r requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements.txt'
+WARNING: You are using pip version 22.0.4; however, version 23.1.2 is available.
+You should consider upgrading via the '/Users/webtechnicom/Downloads/identity-main/env/bin/python3 -m pip install --upgrade pip' command.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ export FLASK_APP=server.py
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ python3 -m flask run --port=4242
+/Users/webtechnicom/Downloads/identity-main/env/bin/python3: No module named flask
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ Flask==2.2.2
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ python-dotenv==0.21.0
+bash: python-dotenv==0.21.0: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ stripe==5.4.0
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ stripe==5.4.0
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ stripe==12.0.5
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ #! /usr/bin/env python3.6
+import json
+import os
+
+import stripe
+from dotenv import load_dotenv, find_dotenv
+from flask import Flask, redirect, render_template, jsonify, request
+
+load_dotenv(find_dotenv())
+
+# For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():(env) (base) iMac-de-Guido:identity-main webtechnicom$ import json
+import os
+
+import stripe
+from dotenv import load_dotenv, find_dotenv
+from flask import Flask, redirect, render_template, jsonify, request
+
+load_dotenv(find_dotenv())
+
+# For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def crbash: import: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ import os
+
+import stripe
+from dotenv import load_dotenv, find_dotenv
+from flask import Flask, redirect, render_template, jsonify, request
+
+load_dotenv(find_dotenv())
+
+# For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.ibash: import: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+import stripe
+from dotenv import load_dotenv, find_dotenv
+from flask import Flask, redirect, render_template, jsonify, request
+
+load_dotenv(find_dotenv())
+
+# For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.ide(env) (base) iMac-de-Guido:identity-main webtechnicom$ import stripe
+from dotenv import load_dotenv, find_dotenv
+from flask import Flask, redirect, render_template, jsonify, request
+
+load_dotenv(find_dotenv())
+
+# For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session(bash: import: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ from dotenv import load_dotenv, find_dotenv
+from flask import Flask, redirect, render_template, jsonify, request
+
+load_dotenv(find_dotenv())
+
+# For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='documenfrom: can't read /var/mail/dotenv
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ from flask import Flask, redirect, render_template, jsonify, request
+
+load_dotenv(find_dotenv())
+
+# For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',from: can't read /var/mail/flask
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ load_dotenv(find_dotenv())
+
+# For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+  bash: syntax error near unexpected token `find_dotenv'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # For sample support and debugging, not required for production:
+stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verificati(env) (base) iMac-de-Guido:identity-main webtechnicom$ stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeErbash: syntax error near unexpected token `newline'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     'stripe-samples/identity/redirect',
+bash: stripe-samples/identity/redirect,: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     version='0.0.1',
+    url='https://github.com/stripe-samples')
+
+stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeError as e:
+        return jsonify({'error': {'message': str(e)}(env) (base) iMac-de-Guido:identity-main webtechnicom$     url='https://github.com/stripe-samples')
+bash: syntax error near unexpected token `)'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ stripe.api_version = '2020-08-27'
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeError as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+    except Exception as e:
+        return jsonify({'error': {'message': sbash: stripe.api_version: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+
+
+@app.route('/', methods=['GET'])
+def get_root():
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeError as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+    except Exception as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+
+
+@app.route('@app.route('@app.rbash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ static_dir = str(os.path.abspath(os.path.join(__file__, "..", os.getenv("STATIC_DIR"))))
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ app = Flask(__name__, static_folder=static_dir, static_url_path="", template_folder=static_dir)
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ @app.route('/', methods=['GET'])
+bash: syntax error near unexpected token `'/','
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ def get_root():
+bash: syntax error near unexpected token `('
+    return render_template('index.html')
+
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeError as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+    except Exception as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+
+
+@app.route('@app.route('@app.route('@app.def webhook_received():
+    # You can use webhooks to receive information about asynchronous payment events.
+    # For more about our webhook events check out https://stripe.com/docs/webhooks.
+    webhook_secret = os.getenv('STRIP(env) (base) iMac-de-Guido:identity-main webtechnicom$     return render_template('index.html')
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ @app.route('/config', methods=['GET'])
+bash: syntax error near unexpected token `'/config','
+def get_config():
+    return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeError as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+    except Exception as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+
+
+@app.route('@app.route('@app.route('@app.def webhook_received():
+    # You can use webhooks to receive information about asynchronous payment events.
+    # For more about our webhook events check out https://stripe.com/docs/webhooks.
+    webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
+    request_data = json.loads(request.data)
+
+    if webhook_secr(env) (base) iMac-de-Guido:identity-main webtechnicom$ def get_config():
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     return jsonify({'publishableKey': os.getenv('STRIPE_PUBLISHABLE_KEY')})
+bash: syntax error near unexpected token `('
+
+
+@app.route('/create-verification-session', methods=['POST'])
+def create_verification_session():
+    try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeError as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+    except Exception as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+
+
+@app.route('@app.route('@app.route('@app.def webhook_received():
+    # You can use webhooks to receive information about asynchronous payment events.
+    # For more about our webhook events check out https://stripe.com/docs/webhooks.
+    webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
+    request_data = json.loads(request.data)
+
+    if webhook_secret:
+        # Retrieve the event by verifyi        # Retrieve the event by verifyi        if we(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ @app.route('/create-verification-session', methods=['POST'])
+bash: syntax error near unexpected token `'/create-verification-session','
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ def create_verification_session():
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     try:
+        verification_session = stripe.identity.VerificationSession.create(
+            type='document',
+            metadata={
+                'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeError as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+    except Exception as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+
+
+@app.route('@app.route('@app.route('@app.def webhook_received():
+    # You can use webhooks to receive information about asynchronous payment events.
+    # For more about our webhook events check out https://stripe.com/docs/webhooks.
+    webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
+    request_data = json.loads(request.data)
+
+    if webhook_secret:
+        # Retrieve the event by verifyi        # Retrieve the event by verifyi        if webhook signing is configured.
+        signature = request.headers.get('stripe-signature')
+        try:
+       bash: try:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         verification_session = stripe.identity.VerificationSession.create(
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             type='document',
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             metadata={
+(env) (base) iMac-de-Guido:identity-main webtechnicom$                 'user_id': '{{USER_ID}}',
+            }
+        )
+        return redirect(verification        return redirect(verification        return rpeError as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+    except Exception as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+
+
+@app.route('@app.route('@app.route('@app.def webhook_received():
+    # You can use webhooks to receive information about asynchronous payment events.
+    # For more about our webhook events check out https://stripe.com/docs/webhooks.
+    webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
+    request_data = json.loads(request.data)
+
+    if webhook_secret:
+        # Retrieve the event by verifyi        # Retrieve the event by verifyi        if webhook signing is configured.
+        signature = request.headers.get('stripe-signature')
+        try:
+            event = stripe.Webhook.construct_event(
+                payload=request.data, sig_header=signature, secret=webhook_secret)
+            data = event['data']
+        ebash: user_id:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             }
+bash: syntax error near unexpected token `}'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         )
+bash: syntax error near unexpected token `)'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         return redirect(verification        return redirect(verification        return rpeError as e:
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         return jsonify({'error': {'message': str(e)}}), 400
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     except Exception as e:
+        return jsonify({'error': {'message': str(e)}}), 400
+
+
+@app.route('@app.route('@app.route('@app.def webhook_received():
+    # You can use webhooks to receive information about asynchronous payment events.
+    # For more about our webhook events check out https://stripe.com/docs/webhooks.
+    webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
+    request_data = json.loads(request.data)
+
+    if webhook_secret:
+        # Retrieve the event by verifyi        # Retrieve the event by verifyi        if webhook signing is configured.
+        signature = request.headers.get('stripe-signature')
+        try:
+            event = stripe.Webhook.construct_event(
+                payload=request.data, sig_header=signature, secret=webhook_secret)
+            data = event['data']
+        except Exception as e:
+            return e
+        # Get the type of webhook event sent - used to check the status of PaymentIntents.
+        event_type = event['type']
+    else:
+        data = request_data['data'bash: except: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         return jsonify({'error': {'message': str(e)}}), 400
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ @app.route('@app.route('@app.route('@app.def webhook_received():
+bash: syntax error near unexpected token `'@app.route('@app.route'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     # You can use webhooks to receive information about asynchronous payment events.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     # For more about our webhook events check out https://stripe.com/docs/webhooks.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     request_data = json.loads(request.data)
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     if webhook_secret:
+>         # Retrieve the event by verifyi        # Retrieve the event by verifyi        if webhook signing is configured.
+>         signature = request.headers.get('stripe-signature')
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         try:
+            event = stripe.Webhook.construct_event(
+                payload=request.data, sig_header=signature, secret=webhook_secret)
+            data = event['data']
+        except Exception as e:
+            return e
+        # Get the type of webhook event sent - used to check the status of PaymentIntents.
+        event_type = event['type']
+    else:
+        data = request_data['data']
+        event_type = request_data['type']
+    data_object = data['object']
+
+    if event['type'] == 'identity.verification_session.verified':
+        print("All the verification checks passed")
+        verification_session = data_object
+
+    elif event['type'] == 'identity.verification_session.requires_input':
+        print("At least one verification check failed")
+        verification_session = data_object
+
+        if verification_session.last_error.code == 'document_unverified_other':
+            print("The document was invalid")
+        elif verification_session.last_error.code == 'document_expired':bash: try:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             event = stripe.Webhook.construct_event(
+                payload=request.data, sig_header=signature, secret=webhook_secret)
+            data = event['data']
+        except Exception as e:
+            return e
+        # Get the type of webhook event sent - used to check the status of PaymentIntents.
+        event_type = event['type']
+    else:
+        data = request_data['data']
+        event_type = request_data['type']
+    data_object = data['object']
+
+    if event['type'] == 'identity.verification_session.verified':
+        print("All the verification checks passed")
+        verification_session = data_object
+
+    elif event['type'] == 'identity.verification_session.requires_input':
+        print("At least one verification check failed")
+        verification_session = data_object
+
+        if verification_session.last_error.code == 'document_unverified_other':
+            print("The document was invalid")
+        elif verification_session.last_error.code == 'document_expired':
+            print("Th   ocument was expired")
+    bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$                 payload=request.data, sig_header=signature, secret=webhook_secret)
+bash: syntax error near unexpected token `)'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             data = event['data']
+        except Exception as e:
+            return e
+        # Get the type of webhook event sent - used to check the status of PaymentIntents.
+        event_type = event['type']
+    else:
+        data = request_data['data']
+        event_type = request_data['type']
+    data_object = data['object']
+
+    if event['type'] == 'identity.verification_session.verified':
+        print("All the verification checks passed")
+        verification_session = data_object
+
+    elif event['type'] == 'identity.verification_session.requires_input':
+        print("At least one verification check failed")
+        verification_session = data_object
+
+        if verification_session.last_error.code == 'document_unverified_other':
+            print("The document was invalid")
+        elif verification_session.last_error.code == 'document_expired':
+            print("Th   ocument was expired")
+        elif verification_session.last_error.code == 'document_type_not_suported':
+            print("The document type wbash: data: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         except Exception as e:
+bash: except: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             return e
+bash: return: e: numeric argument required
+bash: return: can only `return' from a function or sourced script
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         # Get the type of webhook event sent - used to check the status of PaymentIntents.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         event_type = event['type']
+bash: event_type: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     else:
+bash: else:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         data = request_data['data']
+bash: data: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         event_type = request_data['type']
+bash: event_type: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     data_object = data['object']
+bash: data_object: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     if event['type'] == 'identity.verification_session.verified':
+>         print("All the verification checks passed")
+bash: syntax error near unexpected token `"All the verification checks passed"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         verification_session = data_object
+bash: verification_session: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     elif event['type'] == 'identity.verification_session.requires_input':
+bash: syntax error near unexpected token `elif'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         print("At least one verification check failed")
+bash: syntax error near unexpected token `"At least one verification check failed"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         verification_session = data_object
+bash: verification_session: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         if verification_session.last_error.code == 'document_unverified_other':
+>             print("The document was invalid")
+bash: syntax error near unexpected token `"The document was invalid"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         elif verification_session.last_error.code == 'document_expired':
+bash: syntax error near unexpected token `elif'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             print("Th   ocument was expired")
+bash: syntax error near unexpected token `"Th   ocument was expired"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         elif verification_session.last_error.code == 'document_type_not_suported':
+bash: syntax error near unexpected token `elif'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             print("The document type was not supported")
+bash: syntax error near unexpected token `"The document type was not supported"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         else:
+bash: else:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$             print("other error code")
+bash: syntax error near unexpected token `"other error code"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     return jsonify({'status': 'success'})
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ if __name__ == '__main__':
+>     app.run(port=4242, debug=True)
+bash: syntax error near unexpected token `port=4242,'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ source 'https://rubygems.org/'
+bash: https://rubygems.org/: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ gem 'dotenv'
+ERROR:  While executing gem ... (Gem::CommandLineError)
+    Unknown command dotenv
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ gem 'json'
+ERROR:  While executing gem ... (Gem::CommandLineError)
+    Unknown command json
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ gem 'sinatra'
+ERROR:  While executing gem ... (Gem::CommandLineError)
+    Unknown command sinatra
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ gem 'stripe', '7.1.0'
+ERROR:  While executing gem ... (Gem::CommandLineError)
+    Unknown command stripe,
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ gem 'webrick'
+ERROR:  While executing gem ... (Gem::CommandLineError)
+    Unknown command webrick
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ bundle install
+bash: bundle: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ ruby server.rb
+ruby: No such file or directory -- server.rb (LoadError)
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # frozen_string_literal: true
+
+require
+'stripe'
+require
+'sinatra'
+require
+'dotenv'
+
+# Replace if using a different env file or config
+Dotenv.load
+
+# For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    t(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require
+'stripe'
+require
+'sinatra'
+require
+'dotenv'
+
+# Replace if using a different env file or config
+Dotenv.load
+
+# For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the fbash: require: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'stripe'
+require
+'sinatra'
+require
+'dotenv'
+
+# Replace if using a different env file or config
+Dotenv.load
+
+# For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # oThe official command-line tool to interact with Stripe.
+
+Usage:
+  stripe [command]
+
+Webhook commands:
+  listen                             Listen for webhook events
+  trigger                            Trigger test webhook events
+
+Stripe commands:
+  logs                               Interact with Stripe API request logs
+  status                             Check the status of the Stripe API
+
+Resource commands:
+  get                           Quickly retrieve resources from Stripe
+  charges                       Make requests (capture, create, list, etc) on charges
+  customers                     Make requests (create, delete, list, etc) on customers
+  payment_intents               Make requests (cancel, capture, confirm, etc) on payment intents
+  ...                           To see more resource commands, run `stripe resources help`
+
+Other commands:
+  community                          Chat with Stripe engineers and other developers
+  completion                         Generate bash and zsh completion scripts
+  config                             Manually change the config values for the CLI
+  feedback                           Provide us with feedback on the CLI
+  fixtures                           Run fixtures to populate your account with data
+  help                               Help about any command
+  login                              Login to your Stripe account
+  logout                             Logout of your Stripe account
+  open                               Quickly open Stripe pages
+  samples                            Sample integrations built by Stripe
+  serve                              Serve static files locally
+  version                            Get the version of the Stripe CLI
+
+Flags:
+      --api-key string        Your API key to use for the command
+      --color string          turn on/off color output (on, off, auto)
+      --config string         config file (default is $HOME/.config/stripe/config.toml)
+      --device-name string    device name
+  -h, --help                  help for stripe
+      --log-level string      log level (debug, info, trace, warn, error) (default "info")
+  -p, --project-name string   the project name to read from for config (default "default")
+  -v, --version               Get the version of the Stripe CLI
+
+Use "stripe [command] --help" for more information about a command.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require
+'sinatra'
+require
+'dotenv'
+
+# Replace if using a different env file or config
+Dotenv.load
+
+# For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  idbash: require: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'sinatra'
+require
+'dotenv'
+
+# Replace if using a different env file or config
+Dotenv.load
+
+# For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'abash: sinatra: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require
+'dotenv'
+
+# Replace if using a different env file or config
+Dotenv.load
+
+# For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+bash: require: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'dotenv'
+
+# Replace if using a different env file or config
+Dotenv.load
+
+# For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadabash: dotenv: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+# Replace if using a different env file or config
+Dotenv.load
+
+# For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Replace if using a different env file or config
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ Dotenv.load
+bash: Dotenv.load: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # For sample support and debugging, not required for production:
+Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for c(env) (base) iMac-de-Guido:identity-main webtechnicom$ Stripe.set_app_info(
+    'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verificbash: syntax error near unexpected token `newline'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     'stripe-samples/identity/redirect',
+    version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #  bash: stripe-samples/identity/redirect,: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     version: '0.0.1',
+url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #    bash: version:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ url: 'https://github.com/stripe-samples'
+)
+Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity dobash: url:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ )
+bash: syntax error near unexpected token `)'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ Stripe.api_version = '2020-08-27'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_typesbash: Stripe.api_version: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_cardbash: Stripe.api_key: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ set: static, true
+set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allbash: set:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ set: public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
+set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ set: port, 4242
+
+get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | ibash: set:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ get
+'/'
+do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted nambash: get: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ '/'
+bash: /: is a directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number chbash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ content_type
+'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+ bash: content_type: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'text/html'
+send_file
+File.join(settings.public_folder, 'index.html')
+end
+
+get
+'/config'
+do
+content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requbash: text/html: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ send_file
+bash: send_file: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ File.join(settings.public_folder, 'index.html')
+bash: syntax error near unexpected token `settings.public_folder,'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ get
+bash: get: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ '/config'
+bash: /config: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ content_type
+'application/json'
+{
+    publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+}.to_json
+end
+
+post
+'/create-verification-session'
+do
+content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID numbbash: content_type: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'application/json'
+bash: application/json: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ {
+>     publishableKey: ENV['STRIPE_PUBLISHABLE_KEY'],
+> }.to_json
+> end
+>
+> post
+> '/create-verification-session'
+> do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ content_type
+'application/json'
+
+# See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie bash: content_type: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'application/json'
+bash: application/json: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # See https://stripe.com/docs/api/identity/verification_sessions/create
+# for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require(env) (base) iMac-de-Guido:identity-main webtechnicom$ # for the full list of accepted parameters.
+verification_session = Stripe::Identity::VerificationSession.create({
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ verification_session = Stripe::Identity::VerificationSession.create({
+bash: syntax error near unexpected token `('
+    type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verifica(env) (base) iMac-de-Guido:identity-main webtechnicom$     type: 'document',  # or  id_number', or 'address'
+    metadata: {
+        user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information abobash: type:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     metadata: {
+bash: metadata:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         user_id: '{{USER_ID}}',  # Optionally pass the ID of the user in your system.
+    },
+
+    # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/wbash: user_id:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     },
+bash: },: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     # Addi    # Adptions for configuring the verification session:
+    # options: {
+    #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.bod(env) (base) iMac-de-Guido:identity-main webtechnicom$     # options: {
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     #   document: {
+    #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Re(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     # Array of strings of allowed identity document types.
+    #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     allowed_types: ['driving_license'], # passport | id_card
+    #
+    #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env[(env) (base) iMac-de-Guido:identity-main webtechnicom$     #
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     # Collect an ID number and perform an ID number check with the
+    #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     # document's extracted name and date of birth.
+    #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescu(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     requ re_id_number: true,
+    #
+    #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invali(env) (base) iMac-de-Guido:identity-main webtechnicom$     #
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     # Disable image uploads, identity document images have to be captured
+    #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Inva(env) (base) iMac-de-Guido:identity-main webtechnicom$     #        #ing the device's camera.
+    #     require_live_capture: true,
+    #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook si(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     require_live_capture: true,
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     #
+    #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+re(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     # Capture a face image and perform a selfie check comparing a photo
+    #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Str(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     # ID and a picture of your user’s face.
+    #     require_matching_selfie: true,
+    #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeee(env) (base) iMac-de-Guido:identity-main webtechnicom$     #     require_matching_selfie: true,
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     #   }
+    # },
+})
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_inpu(env) (base) iMac-de-Guido:identity-main webtechnicom$     # },
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ })
+bash: syntax error near unexpected token `}'
+
+redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+verificati(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ redirect
+verification_session.url, 303
+end
+
+post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+verification_session =bash: redirect: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ verification_session.url, 303
+bash: verification_session.url,: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ post
+'/webhook'
+do
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+verification_session = event.data.object
+puts
+" ❌ Identity reqbash: post: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ '/webhook'
+bash: /webhook: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+# You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+verification_session = event.data.object
+puts
+" ❌ Identity requires input from(env) (base) iMac-de-Guido:identity-main webtechnicom$ # You can use webhooks to receive information about asynchronous payment events.
+# For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+verification_session = event.data.object
+puts
+" ❌ Identity requires input from user: #{verification_session.id}"
+when
+'identity.verification_session.verified'(env) (base) iMac-de-Guido:identity-main webtechnicom$ # For more about our webhook events check out https://stripe.com/docs/webhooks.
+webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+verification_session = event.data.object
+puts
+" ❌ Identity requires input from user: #{verification_session.id}"
+when
+'identity.verification_session.verified'
+verification_session = event.data.object
+puts
+" ✅ Identity verified: #{veri(env) (base) iMac-de-Guido:identity-main webtechnicom$ webhook_secret = ENV['STRIPE_Wwebhook_seRET']
+payload = request.body.read
+if !webhook_secret.empty?
+# Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+event = nil
+
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+verification_session = event.data.object
+puts
+" ❌ Identity requires input from user: #{verification_session.id}"
+when
+'identity.verification_session.verified'
+verification_session = event.data.object
+puts
+" ✅ Identity verified: #{verification_session.id}"
+when
+'identity.verificabash: webhook_secret: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ payload = request.body.read
+bash: payload: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ if !webhook_secret.empty?
+bash: !webhook_secret.empty?: event not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+bash: sig_header: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ event = nil
+bash: event: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+begin
+event = Stripe::Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+rescue
+JSON::ParserError = > e
+# Invalid payload
+status
+400
+return
+rescue
+StripStripStripStripStripStripSror = > e
+# Invalid signature
+puts
+'⚠️  Webhook signature verification failed.'
+status
+400
+return
+end
+else
+data = JSON.parse(payload, symbolize_names: true)
+event = Stripe::Event.construct_from(data)
+end
+
+case
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+verification_session = event.data.object
+puts
+" ❌ Identity requires input from user: #{verification_session.id}"
+when
+'identity.verification_session.verified'
+verification_session = event.data.object
+puts
+" ✅ Identity verified: #{verification_session.id}"
+when
+'identity.verification_session.canceled', 'identity.verification_session.created', 'identity.verification_session.processing'
+verification_session = event.data.object
+puts
+" 🟡 #{event.type}:(env) (base) iMac-de-Guido:identity-main webtechnicom$ begin
+bash: begin: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ event = Stripe::Webhook.construct_event(
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     payload, sig_header, webhook_secret
+bash: payload,: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ )
+bash: syntax error near unexpected token `)'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ rescue
+bash: rescue: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ JSON::ParserError = > e
+bash: JSON::ParserError: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Invalid payload
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ status
+bash: status: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 400
+bash: 400: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ return
+bash: return: can only `return' from a function or sourced script
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ rescue
+bash: rescue: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ StripStripStripStripStripStripSror = > e
+bash: StripStripStripStripStripStripSror: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Invalid signature
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ puts
+bash: puts: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ '⚠️  Webhook signature verification failed.'
+bash: ⚠️  Webhook signature verification failed.: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ status
+bash: status: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 400
+bash: 400: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ return
+bash: return: can only `return' from a function or sourced script
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ else
+bash: syntax error near unexpected token `else'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ data = JSON.parse(payload, symbolize_names: true)
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ event = Stripe::Event.construct_from(data)
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ case
+bash: syntax error near unexpected token `newline'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input'
+> verification_session = event.data.object
+> puts
+> " ❌ Identity requires input from user: #{verification_session.id}"
+> when
+> 'identity.verification_session.verified'
+> verification_session = event.data.object
+> puts
+> " ✅ Identity verified: #{verification_session.id}"
+> when
+> 'identity.verification_session.canceled', 'identity.verification_session.created', 'identity.verification_session.processing'
+> verification_session = event.data.object
+> puts
+> " 🟡 #{event.type}: #{verification_session.id}"
+> end
+>
+> content_type
+> 'application/json'
+> {
+>     status: 'success'
+> }.to_json
+> end
+> python3 -m venv env
+> source env/bin/activate
+> pip install -r requirements.txt
+> export FLASK_APP=server.py
+> python3 -m flask run --port=4242
+> require_relative './spec_helper.rb'
+
+RSpec.describe "identity integration" do
+  it "serves the index route" do
+    # Get the index html page
+    response = get("/")
+    expect(response).not_to be_nil
+  end
+
+  it "serves config with publishableKey" do
+    resp = get_json("/config")
+    expect(resp).to have_key("publishableKey")
+    expect(resp['publishableKey']).to start_with("pk_test")
+  end
+
+  describe "/create-verification-session" do
+    it "creates a VerificationSession" do
+      response = RestClient.post(
+        "#{SERVER_URL}/create-verification-session",
+        {},
+        {max_redirects: ^0}
+      )
+      # RestClient will follow the redirect, but we can get the first response
+      # RestClient will follow the redirect, but we can get the first response
+      # from the server from the `history`.
+      redirect_response = response.history.first
+
+      # Asserts the right HTTP status code for the redirect
+      expect(redirect_response.code).to eq(303)
+
+      # Pull's >
+RSpec.describe "identity integration" do
+  it "serves the index route" do
+    # Get the index html page
+    response = get("/")
+    expect(response).not_to be_nil
+  end
+
+  it "serves config with publishableKey" do
+    resp = get_json("/config")
+    expect(resp).to have_key("publishableKey")
+    expect(resp['publishableKey']).to start_with("pk_test")
+  end
+
+  describe "/create-verification-session" do
+    it "creates a VerificationSession" do
+      response = RestClient.post(
+        "#{SERVER_URL}/create-verification-session",
+        {},
+        {max_redirects: ^0}
+      )
+      # RestClient will follow the redirect, but we can get the first response
+      # RestClient will follow the redirect, but we can get the first response
+      # from the server from the `history`.
+      redirect_response = response.history.first
+
+      # Asserts the right HTTP status code for the redirect
+      expect(redirect_response.code).to eq(303)
+
+      # Pull's the Checkout session ID out of the Loca> RSpec.describe "identity integration" do
+>   it "serves the index route" do
+>     # Get the index html page
+>     response = get("/")
+>     expect(response).not_to be_nil
+  end
+
+  it "serves config with publishableKey" do
+    resp = get_json("/config")
+    expect(resp).to have_key("publishableKey")
+    expect(resp['publishableKey']).to start_with("pk_test")
+  end
+
+  describe "/create-verification-session" do
+    it "creates a VerificationSession" do
+      response = RestClient.post(
+        "#{SERVER_URL}/create-verification-session",
+        {},
+        {max_redirects: ^0}
+      )
+      # RestClient will follow the redirect, but we can get the first response
+      # RestClient will follow the redirect, but we can get the first response
+      # from the server from the `history`.
+      redirect_response = response.history.first
+
+      # Asserts the right HTTP status code for the redirect
+      expect(redirect_response.code).to eq(303)
+
+      # Pull's the Checkout session ID out of the Location header
+      # to assert the right configuration on the created session.
+      redirect_url = redirect_response.headers[:location]
+      expect(redirec      exp>   end
+>
+>   it "serves config with publishableKey" do
+>     resp = get_json("/config")
+>     expect(resp).to have_key("publishableKey")
+>     expect(resp['publishableKey']).to start_with("pk_test")
+>   end
+>
+>   describe "/create-verification-session" do
+>     it "creates a VerificationSession" do
+>       response = RestClient.post(
+>         "#{SERVER_URL}/create-verification-session",
+>         {},
+>         {max_redirects: ^0}
+>       )
+>       # RestClient will follow the redirect, but we can get the first response
+>       # RestClient will follow the redirect, but we can get the first response
+>       # from the server from the `history`.
+>       redirect_response = response.history.first
+>
+>       # Asserts the right HTTP status code for the redirect
+>       expect(redirect_response.code).to eq(303)
+>
+>       # Pull's the Checkout session ID out of the Location header
+bash: eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeion.requires_input
+verification_session = event.data.object
+puts
+" ❌ Identity requires input from user: #{verification_session.id}"
+when
+identity.verification_session.verified
+verification_session = event.data.object
+puts
+" ✅ Identity verified: #{verification_session.id}"
+when
+identity.verification_session.canceled, identity.verification_session.created, identity.verification_session.processing
+verification_session = event.data.object
+puts
+" 🟡 #{event.type}: #{verification_session.id}"
+end
+
+content_type
+application/json
+{
+    status: success
+}.to_json
+end
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+export FLASK_APP=server.py
+python3 -m flask run --port=4242
+require_relative ./spec_helper.rb
+
+RSpec.describe "identity integration" do
+  it "serves the index route" do
+    # Get the index html page
+    response = get("/")
+    expect(response).not_to be_nil
+  end
+
+  it "serves config with publishableKey" do
+    resp = get_json("/config")
+    expect(resp).to have_key("publishableKey")
+    expect(resp[publishableKey]).to start_with("pk_test")
+  end
+
+  describe "/create-verification-session" do
+    it "creates a VerificationSession" do
+      response = RestClient.post(
+        "#{SERVER_URL}/create-verification-session",
+        {},
+        {max_redirects: ^0}
+      )
+      # RestClient will follow the redirect, but we can get the first response
+      # RestClient will follow the redirect, but we can get the first response
+      # from the server from the `history`.
+      redirect_response = response.history.first
+
+      # Asserts the right HTTP status code for the redirect
+      expect(redirect_response.code).to eq(303)
+
+      # Pulls: File name too long
+(env) (base) iMac-de-Guido:identity-main webtechnicom$       # to assert the right configuration on the created session.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$       redirect_url = redirect_response.headers[:location]
+bash: redirect_url: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$       expect(redirec      expect(redirec   ttps://verify.stripe.com/start")
+bash: syntax error near unexpected token `redirec'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$   end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require_relative
+bash: require_relative: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ './spec_helper.rb'
+bash: ./spec_helper.rb: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ RSpec.describe
+bash: RSpec.describe: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "identity integration"
+bash: identity integration: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ it
+bash: it: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "serves the index route"
+bash: serves the index route: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Get the index html page
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ response = get("/")
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(response).not_to
+bash: syntax error near unexpected token `response'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ be_nil
+bash: be_nil: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ it
+bash: it: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "serves config with publishableKey"
+bash: serves config with publishableKey: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ resp = get_json("/config")
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(resp).to
+bash: syntax error near unexpected token `resp'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ have_key("publishableKey")
+bash: syntax error near unexpected token `"publishableKey"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(resp['publishableKey']).to
+bash: syntax error near unexpected token `resp['publishableKey']'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ start_with("pk_test")
+bash: syntax error near unexpected token `"pk_test"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ describe
+bash: describe: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "/create-verification-session"
+bash: /create-verification-session: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ it
+bash: it: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "creates a VerificationSession"
+bash: creates a VerificationSession: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ resp, status = post_json("/create-verification-session", {})
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(status).to
+bash: syntax error near unexpected token `status'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ eq(200)
+bash: syntax error near unexpected token `200'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(resp).to
+bash: syntax error near unexpected token `resp'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ have_key("client_secret")
+bash: syntax error near unexpected token `"client_secret"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require_relative
+'./spec_helper.rb'
+
+RSpec.describe
+"identity integration"
+do
+it
+"serves the index route"
+do
+# Get the index html page
+response = get("/")
+expect(response).not_to
+be_nil
+end
+
+it
+"serves config with publishableKey"
+do
+resp = get_json("/config")
+expect(resp).to
+have_key("publishableKey")
+expect(resp['publishableKey']).to
+start_with("pk_test")
+end
+
+describe
+"/create-verification-session"
+do
+it
+"creates a VerificationSession"
+do
+response = RestClient.post(
+  "#{SERVER_URL}/create-verification-session",
+  {},
+  {max_redirects: ^ 0}
+)
+# RestClient will follow the redirect, but we can get the first response
+# RestClient will follow the redirect, but we can get the first response
+# from the server from the `history`.
+redirect_response = response.history.first
+
+# Asserts the right HTTP status code for the redirect
+expect(redirect_response.code).to
+eq(303)
+
+# Pull's the Checkout session ID out of the Location header
+bash: require_relative: command not founde created session.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ './spec_helper.rb'
+
+RSpec.describe
+"identity integration"
+do
+it
+"serves the index route"
+do
+# Get the index html page
+response = get("/")
+expect(response).not_to
+be_nil
+end
+
+it
+"serves config with publishableKey"
+do
+resp = get_json("/config")
+expect(resp).to
+have_key("publishableKey")
+expect(resp['publishableKey']).to
+start_with("pk_test")
+end
+
+describe
+"/create-verification-session"
+do
+it
+"creates a VerificationSession"
+do
+response = RestClient.post(
+  "#{SERVER_URL}/create-verification-session",
+  {},
+  {max_redirects: ^ 0}
+)
+# RestClient will follow the redirect, but we can get the first response
+# RestClient will follow the redirect, but we can get the first response
+# from the server from the `history`.
+redirect_response = response.history.first
+
+# Asserts the right HTTP status code for the redirect
+expect(redirect_response.code).to
+eq(303)
+
+# Pull's the Checkout session ID out of the Location header
+# to assert the right configuration on the created session.
+redirect_url = redibash: ./spec_helper.rb: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ RSpec.describe
+"identity integration"
+do
+it
+"serves the index route"
+do
+# Get the index html page
+response = get("/")
+expect(response).not_to
+be_nil
+end
+
+it
+"serves config with publishableKey"
+do
+resp = get_json("/config")
+expect(resp).to
+have_key("publishableKey")
+expect(resp['publishableKey']).to
+start_with("pk_test")
+end
+
+describe
+"/create-verification-session"
+do
+it
+"creates a VerificationSession"
+do
+response = RestClient.post(
+  "#{SERVER_URL}/create-verification-session",
+  {},
+  {max_redirects: ^ 0}
+)
+# RestClient will follow the redirect, but we can get the first response
+# RestClient will follow the redirect, but we can get the first response
+# from the server from the `history`.
+redirect_response = response.history.first
+
+# Asserts the right HTTP status code for the redirect
+expect(redirect_response.code).to
+eq(303)
+
+# Pull's the Checkout session Ibash: RSpec.describe: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "identity integration"
+do
+it
+"serves the index route"
+do
+# Get the index html page
+response = get("/")
+expect(response).not_to
+be_nil
+end
+
+it
+"serves config with publishableKey"
+do
+resp = get_json("/config")
+expect(resp).to
+have_key("publishableKey")
+expect(resp['publishableKey']).to
+start_with("pk_test")
+end
+
+describe
+"/create-verification-session"
+do
+it
+"creates a VerificationSession"
+do
+response = RestClient.post(
+  "#{SERVER_URL}/create-verification-session",
+  {},
+  {max_redirects: ^ 0}
+)
+# RestClient will follow the redirect, but we can get the first response
+# RestClient will follow the redirect, but we can get the first response
+# from the server from the `history`.
+redirect_response = response.history.first
+
+# Asserts the right HTTP status code for the redirect
+expect(redirect_response.code).to
+eq(303)
+
+# Pull's the Checkout session ID out of the Location header
+# to assert the right configuration on the created session.
+redirect_url = redirect_resprese.headers[:location]
+expect(rbash: identity integration: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+it
+"serves the index route"
+do
+# Get the index html page
+response = get("/")
+expect(response).not_to
+be_nil
+end
+
+it
+"serves config with publishableKey"
+do
+resp = get_json("/config")
+expect(resp).to
+have_key("publishableKey")
+expect(resp['publishableKey']).to
+start_with("pk_test")
+end
+
+describe
+"/create-verification-session"
+do
+it
+"creates a VerificationSession"
+do
+response = RestClient.post(
+  "#{SERVER_URL}/create-verification-session",
+  {},
+  {max_redirects: ^ 0}
+)
+# RestClient will follow the redirect, but we can get the first response
+# RestClient will follow the redirect, but we can get the first response
+# from the server from the `history`.
+redirect_response = response.history.first
+
+# Asserts the right HTTP status code for the redirect
+expect(redirect_response.code).to
+eq(303)
+
+# Pull's the Checkout session ID out of the Location header
+# to assert the right configuration on the created session.
+redirect_url = redirect_resprese.headers[:location]
+expect(redir(env) (base) iMac-de-Guido:identity-main webtechnicom$ it
+"serves the index route"
+do
+# Get the index html page
+response = get("/")
+expect(response).not_to
+be_nil
+end
+
+it
+"serves config with publishableKey"
+do
+resp = get_json("/config")
+expect(resp).to
+have_key("publishableKey")
+expect(resp['publishableKey']).to
+start_with("pk_test")
+end
+
+describe
+"/create-verification-session"
+do
+it
+"creates a VerificationSession"
+do
+response = RestClient.post(
+  "#{SERVER_URL}/create-verification-session",
+  {},
+  {max_redirects: ^ 0}
+)
+# RestClient will follow the redirect, but we can get the first response
+# RestClient will follow the redirect, but we can get the first response
+# from the server from the `history`.
+redirect_response = response.history.first
+
+# Asserts the right HTTP status code for the redirect
+expect(redirect_response.code).to
+eq(303)
+
+# Pull's the Checkout session ID out of the Location header
+# to assert the right configuration on the created session.
+redirect_url = redirect_resprese.headers[:location]
+expect(redirect_bash: it: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "serves the index route"
+do
+# Get the index html page
+response = get("/")
+expect(response).not_to
+be_nil
+end
+
+it
+"serves config with publishableKey"
+do
+resp = get_json("/config")
+expect(resp).to
+have_key("publishableKey")
+expect(resp['publishableKey']).to
+start_with("pk_test")
+end
+
+describe
+"/create-verification-session"
+do
+it
+"creates a VerificationSession"
+do
+response = RestClient.post(
+  "#{SERVER_URL}/create-verification-session",
+  {},
+  {max_redirects: ^ 0}
+)
+# RestClient will follow the redirect, but we can get the first response
+# RestClient will follow the redirect, but we can get the first response
+# from the server from the `history`.
+redirect_response = response.history.first
+
+# Asserts the right HTTP status code for the redirect
+expect(redirect_response.code).to
+eq(303)
+
+# Pull's the Checkout session ID out of the Location header
+# to assert the right configuration on the created session.
+redirect_url = redirect_resprese.headers[:location]
+expect(redirect_url).to
+start_with("httpsbash: serves the index route: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+# Get the index html page
+response = get("/")
+expect(response).not_to
+be_nil
+end
+
+it
+"serves config with publishableKey"
+do
+resp = get_json("/config")
+expect(resp).to
+have_key("publishableKey")
+expect(resp['publishableKey']).to
+start_with("pk_test")
+end
+
+describe
+"/create-verification-session"
+do
+it
+"creates a VerificationSession"
+do
+response = RestClient.post(
+  "#{SERVER_URL}/create-verification-session",
+  {},
+  {max_redirects: ^ 0}
+)
+# RestClient will follow the redirect, but we can get the first response
+# RestClient will follow the redirect, but we can get the first response
+# from the server from the `history`.
+redirect_response = response.history.first
+
+# Asserts the right HTTP status code for the redirect
+expect(redirect_response.code).to
+eq(303)
+
+# Pull's the Checkout session ID out of the Location header
+# to assert the right configuration on the created session.
+redirect_url = redirect_resprese.headers[:location]
+expect(redirect_url).to
+start_with("https://v(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Get the index html page
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ response = get("/")
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(response).not_to
+bash: syntax error near unexpected token `response'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ be_nil
+bash: be_nil: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ it
+bash: it: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "serves config with publishableKey"
+bash: serves config with publishableKey: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ resp = get_json("/config")
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(resp).to
+bash: syntax error near unexpected token `resp'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ have_key("publishableKey")
+bash: syntax error near unexpected token `"publishableKey"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(resp['publishableKey']).to
+bash: syntax error near unexpected token `resp['publishableKey']'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ start_with("pk_test")
+bash: syntax error near unexpected token `"pk_test"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ describe
+bash: describe: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "/create-verification-session"
+bash: /create-verification-session: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ it
+bash: it: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "creates a VerificationSession"
+bash: creates a VerificationSession: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ response = RestClient.post(
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$   "#{SERVER_URL}/create-verification-session",
+bash: #{SERVER_URL}/create-verification-session,: No such file or directory
+(env) (base) iMac-de-Guido:identity-main webtechnicom$   {},
+bash: {},: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$   {max_redirects: ^ 0}
+bash: {max_redirects:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ )
+bash: syntax error near unexpected token `)'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # RestClient will follow the redirect, but we can get the first response
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # RestClient will follow the redirect, but we can get the first response
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # from the server from the `history`.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ redirect_response = response.history.first
+bash: redirect_response: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Asserts the right HTTP status code for the redirect
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(redirect_response.code).to
+bash: syntax error near unexpected token `redirect_response.code'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ eq(303)
+bash: syntax error near unexpected token `303'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Pull's the Checkout session ID out of the Location header
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # to assert the right configuration on the created session.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ redirect_url = redirect_resprese.headers[:location]
+bash: redirect_url: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ expect(redirect_url).to
+bash: syntax error near unexpected token `redirect_url'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ start_with("https://verify.stripe.com/start")
+bash: syntax error near unexpected token `"https://verify.stripe.com/start"'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require
+'byebug'
+require
+'json'
+require
+'rest-client'
+require
+'stripe'
+require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectatibash: require: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'byebug'
+require
+'json'
+require
+'rest-client'
+require
+'stripe'
+require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations configbash: byebug: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require
+'json'
+require
+'rest-client'
+require
+'stripe'
+require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes herbash: require: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'json'
+require
+'rest-client'
+require
+'stripe'
+require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou cbash: json: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require
+'rest-client'
+require
+'stripe'
+require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use anbash: require: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'rest-client'
+require
+'stripe'
+require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# abash: rest-client: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require
+'stripe'
+require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/bash: require: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'stripe'
+require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectatioThe official command-line tool to interact with Stripe.
+
+Usage:
+  stripe [command]
+
+Webhook commands:
+  listen                             Listen for webhook events
+  trigger                            Trigger test webhook events
+
+Stripe commands:
+  logs                               Interact with Stripe API request logs
+  status                             Check the status of the Stripe API
+
+Resource commands:
+  get                           Quickly retrieve resources from Stripe
+  charges                       Make requests (capture, create, list, etc) on charges
+  customers                     Make requests (create, delete, list, etc) on customers
+  payment_intents               Make requests (cancel, capture, confirm, etc) on payment intents
+  ...                           To see more resource commands, run `stripe resources help`
+
+Other commands:
+  community                          Chat with Stripe engineers and other developers
+  completion                         Generate bash and zsh completion scripts
+  config                             Manually change the config values for the CLI
+  feedback                           Provide us with feedback on the CLI
+  fixtures                           Run fixtures to populate your account with data
+  help                               Help about any command
+  login                              Login to your Stripe account
+  logout                             Logout of your Stripe account
+  open                               Quickly open Stripe pages
+  samples                            Sample integrations built by Stripe
+  serve                              Serve static files locally
+  version                            Get the version of the Stripe CLI
+
+Flags:
+      --api-key string        Your API key to use for the command
+      --color string          turn on/off color output (on, off, auto)
+      --config string         config file (default is $HOME/.config/stripe/config.toml)
+      --device-name string    device name
+  -h, --help                  help for stripe
+      --log-level string      log level (debug, info, trace, warn, error) (default "info")
+  -p, --project-name string   the project name to read from for config (default "default")
+  -v, --version               Get the version of the Stripe CLI
+
+Use "stripe [command] --help" for more information about a command.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ require
+'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation librarybash: require: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ 'dotenv'
+
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wbash: dotenv: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+# This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wro(env) (base) iMac-de-Guido:identity-main webtechnicom$ # This file was generated by the `rspec --init` command. Conventionally, all
+# specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rs(env) (base) iMac-de-Guido:identity-main webtechnicom$ # specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
+# The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It (env) (base) iMac-de-Guido:identity-main webtechnicom$ # The generated `.rspec` file contains `--require spec_helper` which will cause
+# this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text (env) (base) iMac-de-Guido:identity-main webtechnicom$ # this file to always be loaded, without a need to explicitly require it in any
+# files.
+#
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_s(env) (base) iMac-de-Guido:identity-main webtechnicom$ # files.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ #
+# Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Given that it is always loaded, you are encouraged to keep this file as
+# light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rathe(env) (base) iMac-de-Guido:identity-main webtechnicom$ # light-weight as possible. Requiring heavyweight dependencies from this file
+# will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_c(env) (base) iMac-de-Guido:identity-main webtechnicom$ # will add to the boot time of your test suite on EVERY test run, even for an
+# individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can (env) (base) iMac-de-Guido:identity-main webtechnicom$ # individual file that may not need all of that loaded. Instead, consider making
+# a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `(env) (base) iMac-de-Guido:identity-main webtechnicom$ # a separate helper file that requires the additional dependencies and performs
+# the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you fr(env) (base) iMac-de-Guido:identity-main webtechnicom$ # the additional setup, and require it from the spec files that actually need
+# it.
+#
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This i(env) (base) iMac-de-Guido:identity-main webtechnicom$ # it.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ #
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generall(env) (base) iMac-de-Guido:identity-main webtechnicom$ # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ RSpec.configure
+do | config |
+# rspec-expectations config goes her# rYou can use an alternate
+# assertion/expectation library such as wrong or the stdlib/minitest
+# assertions if you prefer.
+config.expect_with: rspec
+do | expectations |
+# This option will default to `true` in RSpec 4. It makes the `description`
+# and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doublebash: RSpec.configure: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do | config |
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # rspec-expectations config goes her# rYou can use an alternate
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # assertion/expectation library such as wrong or the stdlib/minitest
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # assertions if you prefer.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ config.expect_with: rspec
+bash: config.expect_with:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do | expectations |
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # This option will default to `true` in RSpec 4. It makes the `description`
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # and `failure_message` of custom matchers include text for helper methods
+# defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # defined using `chain`, e.g.:
+#     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_b(env) (base) iMac-de-Guido:identity-main webtechnicom$ #     be_bigger_than(2).and_smaller_than(4).description
+#     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below ar(env) (base) iMac-de-Guido:identity-main webtechnicom$ #     # => "be bigger than 2 and smaller than 4"
+# ...rather than:
+#     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # ...rather than:
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ #     # => "be bigger than 2"
+expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr h(env) (base) iMac-de-Guido:identity-main webtechnicom$ expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes here. You can use an alternate test double
+# library (such as bogus or mocha) by changing the `mock_with` option here.
+config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr heart's content.
+=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bash: expectations.include_chain_clauses_in_custom_matcher_descripexpectations.include_chain_clauses_in_cgoes: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # library (such as bogus or mocha) by changing the `mock_with` option here.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ config.mock_with: rspec
+do | mocks |
+# Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr heart's content.
+=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg
+# is tagged with `:focus`, all examples get run. RSpec also provides
+# aliases for bash: config.mock_with:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ do | mocks |
+bash: syntax error near unexpected token `do'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Prevents you from mocking or stubbing a method that does not exist on
+# a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr heart's content.
+=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg
+# is tagged with `:focus`, all examples get run. RSpec also provides
+# aliases for `it`, `describe`, and `context` that include `:focus`
+# metadata: `fit`, `fdescribe` a(env) (base) iMac-de-Guido:identity-main webtechnicom$ # a real object. This is generally recommended, and will default to
+# `true` in RSpec 4.
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr heart's content.
+=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg
+# is tagged with `:focus`, all examples get run. RSpec also provides
+# aliases for `it`, `describe`, and `context` that include `:focus`
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # `true` in RSpec 4.ibe` and `fcontext`, re#
+mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr heart's content.
+=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg
+# is tagged with `:focus`, all examples get run. RSpec also provides
+# aliases for `it`, `describe`, and `context` that include `:focus`
+# metadata: `fit`, `fdescribe` and `fcontext`, re# metadata: `fit`, `fdescribe` and `fcontext`, re#
+# Allows RSpec to per(env) (base) iMac-de-Guido:identity-main webtechnicom$ mocks.verify_partial_doubles = true
+end
+
+# This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr heart's content.
+=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg
+# is tagged with `:focus`, all examples get run. RSpec also provides
+# aliases for `it`, `describe`, and `context` that include `:focus`
+# metadata: `fit`, `fdescribe` and `fcontext`, re# metadata: `fit`, `fdescribe` and `fcontext`, re#
+# Allows RSpec to persist some state between runs in orderbash: mocks.verify_partial_doubles: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
+# have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr heart's content.
+=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg
+# is tagged with `:focus`, all examples get run. RSpec also provides
+# aliases for `it`, `describe`, and `context` that include `:focus`
+# metadata: `fit`, `fdescribe` and `fcontext`, re# metadata: `fit`, `fdescribe` and `fcontext`, re#
+# Allows RSpec to persist some state between runs in order to support
+# the `--only-failures` and `--next-failure` CLI options. We recommend(env) (base) iMac-de-Guido:identity-main webtechnicom$ # have no way to turn it off -- the option exists only for backwards
+# compatibility in RSpec 3). It causes shared context metadata to be
+# inherited by the metadata hash of host groups and examples, rather than
+# triggering imp# triggeri-inclusion in groups with matching metadata.
+config.shared_contexconfig.sta_behavior =:apply_to_configroups
+
+# The settings below are suggested to provi# Thegood initial experience
+# with RSpec, but feel free to customi# with RSr heart's content.
+=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg
+# is tagged with `:focus`, all examples get run. RSpec also provides
+# aliases for `it`, `describe`, and `context` that include `:focus`
+# metadata: `fit`, `fdescribe` and `fcontext`, re# metadata: `fit`, `fdescribe` and `fcontext`, re#
+# Allows RSpec to persist some state between runs in order to support
+# the `--only-failures` and `--next-failure` CLI options. We recommend
+# you config# you config# you config# you config# you config# you co(env) (base) iMac-de-Guido:identity-main webtechnicom$ # compatibility in RSpec 3). It causes shared context metadata to be
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # inherited by the metadata hash of host groups and examples, rather than
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # triggering imp# triggeri-inclusion in groups with matching metadata.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ config.shared_contexconfig.sta_behavior =:apply_to_configroups
+bash: config.shared_contexconfig.sta_behavior: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # The settings below are suggested to provi# Thegood initial experience
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # with RSpec, but feel free to customi# with RSr heart's content.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ =b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg
+bash: =b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=b=bg: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # is tagged with `:focus`, all examples get run. RSpec also provides
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # aliases for `it`, `describe`, and `context` that include `:focus`
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # metadata: `fit`, `fdescribe` and `fcontext`, re# metadata: `fit`, `fdescribe` and `fcontext`, re#
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Allows RSpec to persist some state between runs in order to support
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # the `--only-failures` and `--next-failure` CLI options. We recommend
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # you config# you config# you config# you config# you config# you config# youe_status_persistence_file_path = "spec/examples.txt"
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Limits the available syntax to the non-monkey patched syntax that is
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # recommended. For more details, see:
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ #   - http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ #   - http://www.teaisaweso.me/blog/2013/05/27/rspecs-new-message-expectation-syntax/
+#   - http://rspec.info/blog/2014/05/notable-changes-in-rspec-3/#zero-monkey-patching-mode
+config.disable_monkey_patching!
+
+# This setting enables warnings. It's recommended, but in some cases may
+# be too noisy due to issues in dependencies.
+config.warnings = true
+
+# Many RSpec users commonly either run the entire suite or an individual
+# file, and it's useful to allow more verbose output when running an
+# individual spec file.
+if config.files_to_run.one?
+# Use the documentation formatter for detailed output,
+# unless a formatter has already been configured
+# (e.g. via a command-line flag).
+config.default_formatter = "doc"
+end
+
+# Print the 10 slowest examples and example groups at the
+# end of the spec run, to help surface which specs are running
+# particularly slow.
+config.profile_examples = 10
+
+# Run specs in random order to surface order dependencies. If you find an
+# order dependency and want to debug it, you can fix th# order depend(env) (base) iMac-de-Guido:identity-main webtechnicom$ #   - http://rspec.info/blog/2014/05/notable-changes-in-rspec-3/#zero-monkey-patching-mode
+config.disable_monkey_patching!
+
+# This setting enables warnings. It's recommended, but in some cases may
+# be too noisy due to issues in dependencies.
+config.warnings = true
+
+# Many RSpec users commonly either run the entire suite or an individual
+# file, and it's useful to allow more verbose output when running an
+# individual spec file.
+if config.files_to_run.one?
+# Use the documentation formatter for detailed output,
+# unless a formatter has already been configured
+# (e.g. via a command-line flag).
+config.default_formatter = "doc"
+end
+
+# Print the 10 slowest examples and example groups at the
+# end of the spec run, to help surface which specs are running
+# particularly slow.
+config.profile_examples = 10
+
+# Run specs in random order to surface order dependencies. If you find an
+# order dependency and want to debug it, you can fix th# order dependency and want to debug it, you cted after each run.
+#     --seed 1234
+cococococococococococococococococococococococococococococococococo(env) (base) iMac-de-Guido:identity-main webtechnicom$ config.disable_monkey_patching!
+bash: config.disable_monkey_patching!: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # This setting enables warnings. It's recommended, but in some cases may
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # be too noisy due to issues in dependencies.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ config.warnings = true
+bash: config.warnings: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # Many RSpec users commonly either run the entire suite or an individual
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # file, and it's useful to allow more verbose output when running an
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ # individual spec file.
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ if config.files_to_run.one?
+> # Use the documentation formatter for detailed output,
+> # unless a formatter has already been configured
+> # (e.g. via a command-line flag).
+> config.default_formatter = "doc"
+> end
+>
+> # Print the 10 slowest examples and example groups at the
+# end of the spec run, to help surface which specs are running
+# particularly slow.
+config.profile_examples = 10
+
+# Run specs in random order to surface order dependencies. If you find an
+# order dependency and want to debug it, you can fix th# order dependency and want to debug it, you cted after each run.
+#     --seed 1234
+cococococococococococococococococococococococococococococococococococococococococococoCLI option.
+# Setting this allows you to use `--seed` to deterministically reproduce
+# test failures related to randomization by passing the same `--seed` value
+# as the one that triggered the failure.
+Kernel.srand
+config.seed
+=end
+end
+
+SERVER_URL = ENV.fetch('SERVER_URL', 'http://localhost:4242')
+Dotenv.load
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+Stripe.max_network_retries = 2
+Stripe.api_version = "2020-08-27"
+
+
+def server_url
+    SERVER_URL
+
+
+end
+
+
+def get(path, *args, **kwargs)
+    RestClient.get("#{SERVER_U> # end of the spec run, to help surface which specs are running
+> # particularly slow.
+> config.profile_examples = 10
+>
+> # Run specs in random order to surface order dependencies. If you find an
+> # order dependency and want to debug it, you can fix th# order dependency and want to debug it, you cted after each run.
+> #     --seed 1234
+> cococococococococococococococococococococococococococococococococococococococococococoCLI option.
+> # Setting this allows you to use `--seed` to deterministically reproduce
+> # test failures related to randomization by passing the same `--seed` value
+> # as the one that triggered the failure.
+> Kernel.srand
+> config.seed
+> =end
+> end
+>
+> SERVER_URL = ENV.fetch('SERVER_URL', 'http://localhost:4242')
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ Dotenv.load
+bash: Dotenv.load: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+bash: Stripe.api_key: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ Stripe.max_network_retries = 2
+bash: Stripe.max_network_retries: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ Stripe.api_version = "2020-08-27"
+bash: Stripe.api_version: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ def server_url
+bash: def: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     SERVER_URL
+bash: SERVER_URL: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ def get(path, *args, **kwargs)
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     RestClient.get("#{SERVER_URL}#{path}", *args, **kwargs)
+bash: syntax error near unexpected token `"#{SERVER_URL}#{path}",'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ enenenenenenenenenenenenenenenenenenenenenenenensponse = RestClient.get("#{SERVER_URL}#{path}", *args, **kwargs)
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     JSON.parse(response.body)
+bash: syntax error near unexpected token `response.body'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ def post_json(path, payload, **kwargs)
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     defaults = {content_type::json}
+Command line interface to a user's defaults.
+Syntax:
+
+'defaults' [-currentHost | -host <hostname>] followed by one of the following:
+
+  read                                 shows all defaults
+  read <domain>                        shows defaults for given domain
+  read <domain> <key>                  shows defaults for given domain, key
+
+  read-type <domain> <key>             shows the type for the given domain, key
+
+  write <domain> <domain_rep>          writes domain (overwrites existing)
+  write <domain> <key> <value>         writes key for domain
+
+  rename <domain> <old_key> <new_key>  renames old_key to new_key
+
+  delete <domain>                      deletes domain
+  delete <domain> <key>                deletes key in domain
+
+  import <domain> <path to plist>      writes the plist at path to domain
+  import <domain> -                    writes a plist from stdin to domain
+  export <domain> <path to plist>      saves domain as a binary plist to path
+  export <domain> -                    writes domain as an xml plist to stdout
+  domains                              lists all domains
+  find <word>                          lists all entries containing word
+  help                                 print this help
+
+<domain> is ( <domain_name> | -app <application_name> | -globalDomain )
+         or a path to a file omitting the '.plist' extension
+
+<value> is one of:
+  <value_rep>
+  -string <string_value>
+  -data <hex_digits>
+  -int[eger] <integer_value>
+  -float  <floating-point_value>
+  -bool[ean] (true | false | yes | no)
+  -date <date_rep>
+  -array <value1> <value2> ...
+  -array-add <value1> <value2> ...
+  -dict <key1> <value1> <key2> <value2> ...
+  -dict-add <key1> <value1> ...
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     response = RestClient.post(
+bash: syntax error near unexpected token `('
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         "#{SERVER_URL}#{path}",
+bash: #{SERVER_URL}#{path},: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         payload.to_json,
+bash: payload.to_json,: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$         defaults.merge(**kwargs)
+bash: syntax error near unexpected token `**kwargs'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     )
+bash: syntax error near unexpected token `)'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$     [JSON.parse(response.body), response.code]
+bash: syntax error near unexpected token `response.body'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ rescue = > e
+bash: rescue: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ begin
+bash: begin: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ [JSON.parse(e.http_body), e.http_code]
+bash: syntax error near unexpected token `e.http_body'
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ rescue = > e
+bash: rescue: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ puts
+bash: puts: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "Response:"
+bash: Response:: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ p
+bash: p: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ response
+bash: response: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ throw
+bash: throw: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ "Failed to parse failed response"
+bash: Failed to parse failed response: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$ end
+bash: end: command not found
+(env) (base) iMac-de-Guido:identity-main webtechnicom$
+

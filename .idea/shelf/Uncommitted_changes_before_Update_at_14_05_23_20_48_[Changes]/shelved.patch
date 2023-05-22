@@ -1,0 +1,185 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"9435bded-579e-43be-ac9e-ee663b5cc043\" name=\"Changes\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"dependabot/bundler/modal/server/ruby/stripe-8.5.0\" />\n      </map>\n    </option>\n    <option name=\"ROOT_SYNC\" value=\"DONT_SYNC\" />\n  </component>\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"TaskManager\">\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 614eccebc3eacd39adb46f4bfd5e8611d867533c)
++++ b/.idea/workspace.xml	(date 1684087658000)
+@@ -1,27 +1,152 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AnalysisUIOptions">
++    <option name="ANALYZE_INJECTED_CODE" value="false" />
++    <option name="SCOPE_TYPE" value="10" />
++  </component>
+   <component name="AutoImportSettings">
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="" />
++    <list default="true" id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)">
++      <change afterPath="$PROJECT_DIR$/modal/client/css/global.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/client/css/normalize.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/client/favicon.ico" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/client/index.html" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/client/submitted.html" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Configuration/StripeOptions.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Controllers/IdentityController.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Models/ConfigResponse.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Models/CreatePaymentIntentResponse.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Program.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Properties/launchSettings.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/Startup.cs" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/appsettings.Development.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/appsettings.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/server.csproj" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/dotnet/server.sln" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/go/go.mod" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/go/go.sum" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/go/server.go" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/java/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/java/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/java/src/main/java/com/stripe/sample/Server.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/package.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/src/server.ts" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/tsconfig.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node-typescript/tslint.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node/package.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/node/server.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/.htaccess" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/composer.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/create-verification-session.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/css/base.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/index.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/shared.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/submitted.html" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/utils.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/php/public/webhook.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/python/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/python/requirements.txt" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/python/server.py" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/ruby/Gemfile" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/ruby/README.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/modal/server/ruby/server.rb" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="PREVIOUS_COMMIT_AUTHORS">
++      <list>
++        <option value="Steve Nagle &lt;webtechnicom@imac-de-guido.local&gt;" />
++      </list>
++    </option>
++    <option name="PUSH_TAGS">
++      <GitPushTagMode>
++        <option name="argument" value="--follow-tags" />
++        <option name="title" value="Current Branch" />
++      </GitPushTagMode>
++    </option>
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="dependabot/bundler/modal/server/ruby/stripe-8.5.0" />
++        <entry key="$PROJECT_DIR$" value="stripe.v_13.0.3" />
+       </map>
+     </option>
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+     <option name="ROOT_SYNC" value="DONT_SYNC" />
+   </component>
++  <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/spec/freshsales-redirect_server_spec.rb" root0="FORCE_HIGHLIGHTING" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProjectId" id="2PnHIRyS3RvS6ZY2bz7KggPFOhd" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+   </component>
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Git.Branch.Popup.ShowAllRemotes": "true",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "last_opened_file_path": "/Users/webtechnicom/Downloads/identity-main",
++    "run.code.analysis.last.selected.profile": "aDefault",
++    "settings.editor.selected.configurable": "preferences.pluginManager"
++  },
++  "keyToStringList": {
++    "ChangesTree.GroupingKeys": [
++      "directory",
++      "repository"
++    ]
++  }
++}]]></component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="9435bded-579e-43be-ac9e-ee663b5cc043" name="Changes" comment="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++      <created>1684085845792</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1684085845792</updated>
++    </task>
+     <servers />
+   </component>
++  <component name="UpdateCopyrightCheckinHandler">
++    <option name="UPDATE_COPYRIGHT" value="true" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
++    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
++    <MESSAGE value="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++    <option name="LAST_COMMIT_MESSAGE" value="[![CI](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml/badge.svg?branch=anniel-generate-major&amp;event=workflow_run)](https://github.com/stripe/stripe-ruby/actions/workflows/ci.yml)" />
++    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
++    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
++    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"VcsDirectoryMappings\">\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\n    <mapping directory=\"$PROJECT_DIR$/modal\" vcs=\"Git\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 614eccebc3eacd39adb46f4bfd5e8611d867533c)
++++ b/.idea/vcs.xml	(date 1684087418000)
+@@ -2,6 +2,7 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/helloworld" vcs="Git" />
+     <mapping directory="$PROJECT_DIR$/modal" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file

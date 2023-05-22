@@ -1,0 +1,66 @@
+sis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(verop(venv) @ellipsis52 ➜ /worksp(ot f(aces(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(verop(venv) @ellipsis52 ➜ /worksp(ot f(vet (venv) @ellipsis52 ➜bash: command substitution: line 3: unexpected EOF while looking for matching `''
+bash: command substitution: line 6: syntax error: unexpected end of file
+bash: command substitution: line 3: unexpected EOF while looking for matching `''
+bash: command substitution: line 6: syntax error: unexpected end of file
+bash: 
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.rest import Client
+from: can't read /vfrom: can't read /vfrom: can't read /vfrom: can't read /vfrom: can't read /vfrom: can't read /vfrom: can't read /vfrom:: can't read /var/mail/twilio.rest.studio.v1
+(venv) @ellipsis52 ➜ /workspaces/twilio-pyt(venv) @ellipsis52 ➜ /workspaces/twi2 import V2
+frfrfrfrfrfrfrfrfrfrfrfrfrfrwilfrfrfrfrfrfrfrfrfrfrfrfrfrfrlipsis52 ➜ /workspaces/twilfrfrfrfrn (maifrfrfrfrfrfrfrfrfrfsis52 ➜ /workspaces/twilio-python (main) $ 
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ class StudioBase(Domain):
+bash: syntax error near unexpected token .__init__'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._v1: Optional[V1] = None
+bash: self._v1:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._v2: Optional[V2] = None
+bash: self._v2:: command not found
+(venv) @ellipsis52 ➜ /workspaces/tw(venv) @ellipsis52 ➜ /workspaces/tw(venv) @ellipsis52 ➜ /workspaces/tw(venv) @  (venv) @ellipsis52 ➜ /workspaces/tw(venv)d
+(venv) @ellipsis52 ➜ /workspaces/tw(venv) @ellipsis52 ➜ /workspaces/tw(venv) @ellipsis52 ➜ /workspaces/tw(venv) @  (venv) @ellipsis52 ➜ /workspaces/tw(venv)d
+io-python (main) $         : File name too long
+(base) iMac-de-Guido:identity-main webtechnicom$ >         :returns: Versions v1 of Studio
+>         """
+bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: 
+>  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >py>  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >   self._v1: numeric argument required
+bash: return: can only `return' from a function or sourced script
+(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(verop(venv) @ellipsis52 ➜ /worksp(ot f(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(verop(venv) @ellipsis52 ➜ /worksp(ot f(aces(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(verop(venv) @ellipsis52 ➜ /worksp(ot f(vet (venv) @ellipsis52 ➜ /w➜ /workspaces/twilio-python (main) $      bash: Versions: command not found
+(base) iMac-de-Guido:identity-main webtechnicom$ >         """
+> bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: 
+> >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >py>  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >   self._v1: numeric argument required
+> bash: return: can only `return' from a function or sourced script
+> (venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(verop(venv) @ellipsis52 ➜ /worksp(ot f(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(verop(venv) @ellipsis52 ➜ /worksp(ot f(aces(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(venv) @ellipsis52 ➜ /worksp(verop(venv) @ellipsis52 ➜ /worksp(ot f(vet (venv) @ellipsis52 ➜ /w➜ /workspaces/twilio-python (main) $         if self._v2 is None:
+> >             self._v2 = V2(self)
+> bash: syntax error near unexpected token `('
+> (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return self._v2
+> bash: return: self._v2: numeric argument required
+> bash: return: can only `return' from a function or sourced script
+> (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ 
+> (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __repr__(self) -> str:
+> bash: syntax error near unexpected token `('
+> (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+bash: command substitution: line 1: unexpected EOF while looking for matching `''
+bash: command substitution: line 5: syntax error: unexpected end of file
+bash: command substitution: line 1: unexpected EOF while looking for matching `''
+bash: command substitution: line 5: syntax error: unexpected end of file
+bash: command substitution: line 1: unexpected EOF while looking for matching `''
+bash: command substitution: line 5: syntax error: unexpected end of file
+bash: command substitution: line 1: unexpected EOF while looking for matching `''
+bash: command substitution: line 5: syntax error: unexpected end of file
+bash: 
+bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: $'\n        :returns: Versions v1 bash: 
+>  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >py>  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >   self._v1: numeric argument required
+bash: return: can only ('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return self._v2
+bash: return: self._v2: numeric argument required
+bash: return: can only ('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         : File name too long
+(base) iMac-de-Guido:identity-main webtechnicom$ >         Provide a friendly representation
+bash: a: command not found
+(base) iMac-de-Guido:identity-main webtechnicom$ >         :returns: Machine friendly representation
+Machine: Can't find any plists for Machine
+(base) iMac-de-Guido:identity-main webtechnicom$ >         """
+> bash: $'\n        Provide a friendly representation\n        :returns: Machine friendly representation\n        ': command not found
+> (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return "<Twilio.Studio>"
+> bash: return: <Twilio.Studio>: numeric argument required
+> bash: return: can only `return' from a function or sourced script
+> (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ 100000000€
+> $payload
+> 

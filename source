@@ -1,0 +1,730 @@
+pContextInstance\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         payload = await self._version.fetch_async(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             method="GET",
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             uri=self._uri,
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return ExecutionStepContextInstance(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             self._version,
+bash: self._version,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             payload,
+bash: payload,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             flow_sid=self._solution["flow_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             execution_sid=self._solution["execution_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             step_sid=self._solution["step_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __repr__(self) -> str:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Provide a friendly representation
+>
+>         :returns: Machine friendly representation
+>         """
+bash: $'\n        Provide a friendly representation\n\n        :returns: Machine friendly representation\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         context = " ".join("{}={}".format(k, v) for k, v in self._solution.items())
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return "<Twilio.Studio.V1.ExecutionStepContextContext {}>".format(context)
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ class ExecutionStepContextList(ListResource):
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __init__(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self, version: Version, flow_sid: str, execution_sid: str, step_sid: str
+bash: self,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     ):
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Initialize the ExecutionStepContextList
+>
+>         :param version: Version that contains the resource
+>         :param flow_sid: The SID of the Flow with the Step to fetch.
+>         :param execution_sid: The SID of the Execution resource with the Step to fetch.
+>         :param step_sid: The SID of the Step to fetch.
+>
+>         """
+bash: $'\n        Initialize the ExecutionStepContextList\n\n        :param version: Version that contains the resource\n        :param flow_sid: The SID of the Flow with the Step to fetch.\n        :param execution_sid: The SID of the Execution resource with the Step to fetch.\n        :param step_sid: The SID of the Step to fetch.\n\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         super().__init__(version)
+bash: syntax error near unexpected token `.__init__'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         # Path Solution
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._solution = {
+bash: self._solution: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "flow_sid": flow_sid,
+bash: flow_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "execution_sid": execution_sid,
+bash: execution_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "step_sid": step_sid,
+bash: step_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         }
+bash: syntax error near unexpected token `}'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def get(self) -> ExecutionStepContextContext:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Constructs a ExecutionStepContextContext
+>
+>         """
+bash: $'\n        Constructs a ExecutionStepContextContext\n\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return ExecutionStepContextContext(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             self._version,
+bash: self._version,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             flow_sid=self._solution["flow_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             execution_sid=self._solution["execution_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             step_sid=self._solution["step_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __call__(self) -> ExecutionStepContextContext:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Constructs a ExecutionStepContextContext
+>
+>         """
+bash: $'\n        Constructs a ExecutionStepContextContext\n\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return ExecutionStepContextContext(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             self._version,
+bash: self._version,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             flow_sid=self._solution["flow_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             execution_sid=self._solution["execution_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             step_sid=self._solution["step_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __repr__(self) -> str:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Provide a friendly representation
+>
+>         :returns: Machine friendly representation
+>         """
+bash: $'\n        Provide a friendly representation\n\n        :returns: Machine friendly representation\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return "<Twilio.Studio.V1.ExecutionStepContextList>"
+bash: return: <Twilio.Studio.V1.ExecutionStepContextList>: numeric argument required
+bash: return: can only `return' from a function or sourced script
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ r"""
+>     This code was generated by
+>    ___ _ _ _ _ _    _ ____    ____ ____ _    ____ ____ _  _ ____ ____ ____ ___ __   __
+>     |  | | | | |    | |  | __ |  | |__| | __ | __ |___ |\ | |___ |__/ |__|  | |  | |__/
+>     |  |_|_| | |___ | |__|    |__| |  | |    |__] |___ | \| |___ |  \ |  |  | |__| |  \
+>
+>     Twilio - Studio
+>     This is the public Twilio REST API.
+>
+>     NOTE: This class is auto generated by OpenAPI Generator.
+>     https://openapi-generator.tech
+>     Do not edit the class manually.
+> """
+rom typing import Any, Dict, Optional
+from twilio.base.instance_context import InstanceContext
+from bash: r
+    This code was generated by
+   ___ _ _ _ _ _    _ ____    ____ ____ _    ____ ____ _  _ ____ ____ ____ ___ __   __
+    |  | | | | |    | |  | __ |  | |__| | __ | __ |___ |\ | |___ |__/ |__|  | |  | |__/
+    |  |_|_| | |___ | |__|    |__| |  | |    |__] |___ | \| |___ |  \ |  |  | |__| |
+    Twilio - Studio
+    This is the public Twilio REST API.
+
+    NOTE: This class is auto generated by OpenAPI Generator.
+    https://openapi-generator.tech
+    Do not edit the class manually.
+: No such file or directory
+twilio.base.instance_resource import InstanceResource
+from twilio.base.list_resource import ListResource
+from twilio.base.version import Version
+
+
+class ExecutionContextInstance(InstanceResource):
+
+  (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+  """
+    :ivar account_sid: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ExecutionContext resource.
+    :ivar context: The current state of the Flow's Execut(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+ion. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution.
+    :ivar flow_sid(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from typing import Any, Dict, Optional
+: The SID of the Flow.
+    :ivar execution_sid: Thfrom: can't read /var/mail/typing
+e SID of the context's Execution resource.
+    :ivar url: The absolute URL of the resource.
+    """
+
+    def __init__(
+        self,
+        version: Version,
+        payload: Dict[str, Any],
+        (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.base.instance_context import InstanceContext
+flow_sid: str,
+        execution_sid: str,
+    ):
+from: can't read /var/mail/twilio.base.instance_context
+        super().__init__(version)
+
+        self.account_sid: Optional[str] = payload.get("account_sid")
+        self.context: Optional[Dict[str, object]] = payload.get("context")
+        self.flow_sid(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.base.instance_resource import InstanceResource
+: Optional[str] = payload.get("flow_sid")
+        from: can't read /var/mail/twilio.base.instance_resource
+self.execution_sid: Optional[str] = payload.get("execution_sid")
+        self.url: Optional[str] = payload.get("url")
+
+        self._solution = {
+    (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.base.list_resource import ListResource
+        "flow_sid": flow_sid,
+            "executifrom: can't read /var/mail/twilio.base.list_resource
+on_sid": execution_sid,
+        }
+        self._context: Optional[ExecutionContextContext] = None
+
+    @property
+    def _proxy(self) -> "ExecutionCon(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.base.version import Version
+textContext":
+        """
+        Generate an instance context for the instance, the context is capafrom: can't read /var/mail/twilio.base.version
+ble of
+        performing various actions. All instance actions are proxied to the context
+
+        :returns: ExecutionContextContext for this ExecutionContextInstance
+        """
+        if self._context is None:
+            self._context = Executio(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+nContextContext(
+                self._version,
+                flow_sid=self._solution["flow_sid"],
+                execution_sid=self._solution["execution_sid"],
+            )
+        return self._context
+
+    def fetch(self) -> "ExecutionContextIn(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+stance":
+        """
+        Fetch the ExecutionContextInstance
+
+
+        :returns: The fetched ExecutionContextInstance
+        """
+        return self._proxy.fetch()
+
+    async def fetch_async(self)(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ class ExecutionContextInstance(InstanceResource):
+bash: syntax error near unexpected token `('
+ -> "ExecutionContextInstance":
+        """
+        Asynchronous coroutine to fetch the ExecutionContextInstance
+
+
+        :returns: The fetched ExecutionContextInstance
+        """
+        return awa(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+it self._proxy.fetch_async()
+
+    def __repr__(self) -> str:
+        """
+        Provide a friendly representation
+
+        :returns: Machine friendly representation
+        """
+        context = " ".(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     """
+>     :ivar account_sid: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ExecutionContext resource.
+>     :ivar context: The current state of the Flow's Execution. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution.
+>     :ivar flow_sid: The SID of the Flow.
+>     :ivar execution_sid: The SID of the context's Execution resource.
+>     :ivar url: The absolute URL of the resource.
+>     """
+on.items())
+        return "<Twilio.Studio.V1.ExecutionContextInstance {}>".format(context)
+
+
+class ExecutionContextContext(InstanceContext):
+    def bash:
+    :ivar account_sid: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ExecutionContext resource.
+    :ivar context: The current state of the Flow's Execution. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution.
+    :ivar flow_sid: The SID of the Flow.
+    :ivar execution_sid: The SID of the context's Execution resource.
+    :ivar url: The absolute URL of the resource.
+    : No such file or directory
+__init__(self, version: Version, flow_sid: str, execution_sid: str):
+        """
+        Initialize the ExecutionContextContext
+
+        :param version: Version that contains the resource
+        :par(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+am flow_sid: The SID of the Flow with the Execution context to fetch.
+        :param execution_sid: The SID of the Execution context to fetch.
+        """
+        super().__init__(version)
+
+        # (venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __init__(
+bash: syntax error near unexpected token `('
+Path Solution
+        self._solution = {
+            "flow_sid": flow_sid,
+            "execution_sid": execution_sid,
+        }
+        self._uri = "(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self,
+/Flows/{flow_sid}/Executions/{execution_sid}/Contebash: self,: command not found
+xt".format(
+            **self._solution
+        )
+
+    def fetch(self) -> ExecutionContextInstance:
+        """
+        Fetch the ExecutionContextIns(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         version: Version,
+bash: version:: command not found
+tance
+
+
+        :returns: The fetched ExecutionContextInstance
+        """
+
+        payload = self._version.fetch(
+            method="GET",
+            uri=self._uri,
+        )
+
+        return Execut(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         payload: Dict[str, Any],
+bash: payload:: command not found
+ionContextInstance(
+            self._version,
+            payload,
+            flow_sid=self._solution["flow_sid"],
+            execution_sid=self._solution["execution_sid"],
+        )
+
+    async def(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         flow_sid: str,
+ fetch_async(self) -> ExecutionContextInstance:
+  bash: flow_sid:: command not found
+      """
+        Asynchronous coroutine to fetch the ExecutionContextInstance
+
+
+        :returns: The fetched ExecutionContextInstance
+        """
+
+        payload = await self._version.fetch_async(
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         execution_sid: str,
+bash: execution_sid:: command not found
+            method="GET",
+            uri=self._uri,
+        )
+
+        return ExecutionContextInstance(
+            self._version,
+            payload,
+            flow_sid=self._solution["flow_sid"](venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     ):
+bash: syntax error near unexpected token `)'
+,
+            execution_sid=self._solution["execution_sid"],
+        )
+
+    def __repr__(self) -> str:
+        """
+        Provide a friendly representation
+
+        :returns: Machine friendly represe(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         super().__init__(version)
+bash: syntax error near unexpected token `.__init__'
+ntation
+        """
+        context = " ".join("{}={}".format(k, v) for k, v in self._solution.items())
+        return "<Twilio.Studio.V1.ExecutionContextContext {}>".format(context)
+
+
+class Execution(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+ContextList(ListResource):
+    def __init__(self, version: Version, flow_sid: str, execution_sid: str):
+        """
+        Initia(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self.account_sid: Optional[str] = payload.get("account_sid")
+bash: syntax error near unexpected token `('
+ntextList
+
+        :param version: Version that c(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self.context: Optional[Dict)
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self.flow_sid: Optional[str] = payload.get("flow_sid")
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self.execution_sid: Optional[str] = payload.get("execution_sid")
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self.url: Optional[str] = payload.get("url")
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._solution = {
+bash: self._solution: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "flow_sid": flow_sid,
+bash: flow_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "execution_sid": execution_sid,
+bash: execution_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         }
+bash: syntax error near unexpected token `}'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._context: Optional[ExecutionContextContext] = None
+bash: self._context:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     @property
+bash: @property: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def _proxy(self) -> "ExecutionContextContext":
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Generate an instance context for the instance, the context is capable of
+>         performing various actions. All instance actions are proxied to the context
+>
+>         :returns: ExecutionContextContext for this ExecutionContextInstance
+>         """
+bash: $'\n        Generate an instance context for the instance, the context is capable of\n        performing various actions. All instance actions are proxied to the context\n\n        :returns: ExecutionContextContext for this ExecutionContextInstance\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         if self._context is None:
+>             self._context = ExecutionContextContext(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $                 self._version,
+bash: self._version,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $                 flow_sid=self._solution["flow_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $                 execution_sid=self._solution["execution_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return self._context
+bash: return: self._context: numeric argument required
+bash: return: can only `return' from a function or sourced script
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def fetch(self) -> "ExecutionContextInstance":
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Fetch the ExecutionContextInstance
+>
+>
+>         :returns: The fetched ExecutionContextInstance
+>         """
+bash: $'\n        Fetch the ExecutionContextInstance\n\n\n        :returns: The fetched ExecutionContextInstance\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return self._proxy.fetch()
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     async def fetch_async(self) -> "ExecutionContextInstance":
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Asynchronous coroutine to fetch the ExecutionContextInstance
+>
+>
+>         :returns: The fetched ExecutionContextInstance
+>         """
+bash: $'\n        Asynchronous coroutine to fetch the ExecutionContextInstance\n\n\n        :returns: The fetched ExecutionContextInstance\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return await self._proxy.fetch_async()
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __repr__(self) -> str:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Provide a friendly representation
+>
+>         :returns: Machine friendly representation
+>         """
+bash: $'\n        Provide a friendly representation\n\n        :returns: Machine friendly representation\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         context = " ".join("{}={}".format(k, v) for k, v in self._solution.items())
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return "<Twilio.Studio.V1.ExecutionContextInstance {}>".format(context)
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ class ExecutionContextContext(InstanceContext):
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __init__(self, version: Version, flow_sid: str, execution_sid: str):
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Initialize the ExecutionContextContext
+>
+>         :param version: Version that contains the resource
+>         :param flow_sid: The SID of the Flow with the Execution context to fetch.
+>         :param execution_sid: The SID of the Execution context to fetch.
+>         """
+bash: $'\n        Initialize the ExecutionContextContext\n\n        :param version: Version that contains the resource\n        :param flow_sid: The SID of the Flow with the Execution context to fetch.\n        :param execution_sid: The SID of the Execution context to fetch.\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         super().__init__(version)
+bash: syntax error near unexpected token `.__init__'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         # Path Solution
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._solution = {
+bash: self._solution: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "flow_sid": flow_sid,
+bash: flow_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "execution_sid": execution_sid,
+bash: execution_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         }
+bash: syntax error near unexpected token `}'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._uri = "/Flows/{flow_sid}/Executions/{execution_sid}/Context".format(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             **self._solution
+bash: **self._solution: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def fetch(self) -> ExecutionContextInstance:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Fetch the ExecutionContextInstance
+>
+>
+>         :returns: The fetched ExecutionContextInstance
+>         """
+bash: $'\n        Fetch the ExecutionContextInstance\n\n\n        :returns: The fetched ExecutionContextInstance\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         payload = self._version.fetch(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             method="GET",
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             uri=self._uri,
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return ExecutionContextInstance(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             self._version,
+bash: self._version,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             payload,
+bash: payload,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             flow_sid=self._solution["flow_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             execution_sid=self._solution["execution_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     async def fetch_async(self) -> ExecutionContextInstance:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Asynchronous coroutine to fetch the ExecutionContextInstance
+>
+>
+>         :returns: The fetched ExecutionContextInstance
+>         """
+bash: $'\n        Asynchronous coroutine to fetch the ExecutionContextInstance\n\n\n        :returns: The fetched ExecutionContextInstance\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         payload = await self._version.fetch_async(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             method="GET",
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             uri=self._uri,
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return ExecutionContextInstance(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             self._version,
+bash: self._version,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             payload,
+bash: payload,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             flow_sid=self._solution["flow_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             execution_sid=self._solution["execution_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __repr__(self) -> str:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Provide a friendly representation
+>
+>         :returns: Machine friendly representation
+>         """
+bash: $'\n        Provide a friendly representation\n\n        :returns: Machine friendly representation\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         context = " ".join("{}={}".format(k, v) for k, v in self._solution.items())
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return "<Twilio.Studio.V1.ExecutionContextContext {}>".format(context)
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ class ExecutionContextList(ListResource):
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __init__(self, version: Version, flow_sid: str, execution_sid: str):
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Initialize the ExecutionContextList
+>
+>         :param version: Version that contains the resource
+>         :param flow_sid: The SID of the Flow with the Execution context to fetch.
+>         :param execution_sid: The SID of the Execution context to fetch.
+>
+>         """
+bash: $'\n        Initialize the ExecutionContextList\n\n        :param version: Version that contains the resource\n        :param flow_sid: The SID of the Flow with the Execution context to fetch.\n        :param execution_sid: The SID of the Execution context to fetch.\n\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         super().__init__(version)
+bash: syntax error near unexpected token `.__init__'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         # Path Solution
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._solution = {
+bash: self._solution: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "flow_sid": flow_sid,
+bash: flow_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             "execution_sid": execution_sid,
+bash: execution_sid:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         }
+bash: syntax error near unexpected token `}'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def get(self) -> ExecutionContextContext:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Constructs a ExecutionContextContext
+>
+>         """
+bash: $'\n        Constructs a ExecutionContextContext\n\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return ExecutionContextContext(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             self._version,
+bash: self._version,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             flow_sid=self._solution["flow_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             execution_sid=self._solution["execution_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __call__(self) -> ExecutionContextContext:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Constructs a ExecutionContextContext
+>
+>         """
+bash: $'\n        Constructs a ExecutionContextContext\n\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return ExecutionContextContext(
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             self._version,
+bash: self._version,: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             flow_sid=self._solution["flow_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $             execution_sid=self._solution["execution_sid"],
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         )
+bash: syntax error near unexpected token `)'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __repr__(self) -> str:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Provide a friendly representation
+>
+>         :returns: Machine friendly representation
+>         """
+bash: $'\n        Provide a friendly representation\n\n        :returns: Machine friendly representation\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return "<Twilio.Studio.V1.ExecutionContextList>"
+bash: return: <Twilio.Studio.V1.ExecutionContextList>: numeric argument required
+bash: return: can only `return' from a function or sourced script
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ r"""
+>   This code was generated by
+>   ___ _ _ _ _ _    _ ____    ____ ____ _    ____ ____ _  _ ____ ____ ____ ___ __   __
+>    |  | | | | |    | |  | __ |  | |__| | __ | __ |___ |\ | |___ |__/ |__|  | |  | |__/
+>    |  |_|_| | |___ | |__|    |__| |  | |    |__] |___ | \| |___ |  \ |  |  | |__| |  \
+>
+>   NOTE: This class is auto generated by OpenAPI Generator.
+>   https://openapi-generator.tech
+>   Do not edit the class manually.
+> """
+nal
+
+from twilio.base.domain import Domain
+from twilio.rest import Client
+from twilio.rest.studio.v1bash: r
+  This code was generated by
+  ___ _ _ _ _ _    _ ____    ____ ____ _    ____ ____ _  _ ____ ____ ____ ___ __   __
+   |  | | | | |    | |  | __ |  | |__| | __ | __ |___ |\ | |___ |__/ |__|  | |  | |__/
+   |  |_|_| | |___ | |__|    |__| |  | |    |__] |___ | \| |___ |  \ |  |  | |__| |
+  NOTE: This class is auto generated by OpenAPI Generator.
+  https://openapi-generator.tech
+  Do not edit the class manually.
+: No such file or directory
+ import V1
+from twilio.rest.studio.v2 import V2
+
+
+class StudioBase(Domain):
+    def __init__(self, twilio: Client):
+        """
+        Initialize the(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+o
+        """
+        super().__init__(twilio, "https://studio.twilio.com")
+        self._v1: Optional[V1] = None
+        self._v2: Optional[V2] = Non(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from typing import Optional
+e
+
+    @property
+    def v1(self) -> V1:
+        "from: can't read /var/mail/typing
+""
+        :returns: Versions v1 of Studio
+        """
+        if self._v1 is None:
+            self._v1 = V1(self)
+        return self._v1
+
+    @property
+    def v2(self) -> V2:
+        """
+        :(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+returns: Versions v2 of Studio
+        """
+        if self._v2 is None:
+            self._v2 = V2(self)
+        return self._v2
+
+    def __repr__(self) -> str:
+        """
+        Provide a friendly r(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.base.domain import Domain
+from: can't read /var/mail/twilio.base.domainepresentation
+        :returns: Machine friendly r
+epresentation
+        """
+        return "<Twilio.Studio>"
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.rest import Client
+from: can't read /var/mail/twilio.rest
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.rest.studio.v1 import V1
+from: can't read /var/mail/twilio.rest.studio.v1
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ from twilio.rest.studio.v2 import V2
+from: can't read /var/mail/twilio.rest.studio.v2
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $ class StudioBase(Domain):
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __init__(self, twilio: Client):
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Initialize the Studio Domain
+>
+>         :returns: Domain for Studio
+>         """
+bash: $'\n        Initialize the Studio Domain\n\n        :returns: Domain for Studio\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         super().__init__(twilio, "https://studio.twilio.com")
+bash: syntax error near unexpected token `.__init__'
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._v1: Optional[V1] = None
+bash: self._v1:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         self._v2: Optional[V2] = None
+bash: self._v2:: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     @property
+bash: @property: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def v1(self) -> V1:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         :returns: Versions v1 of Studio
+>         """
+bash: $'\n        :returns: Versions v1 of Studio\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         if self._v1 is None:
+>             self._v1 = V1(self)
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return self._v1
+bash: return: self._v1: numeric argument required
+bash: return: can only `return' from a function or sourced script
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     @property
+bash: @property: command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def v2(self) -> V2:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         :returns: Versions v2 of Studio
+>         """
+bash: $'\n        :returns: Versions v2 of Studio\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         if self._v2 is None:
+>             self._v2 = V2(self)
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return self._v2
+bash: return: self._v2: numeric argument required
+bash: return: can only `return' from a function or sourced script
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $     def __repr__(self) -> str:
+bash: syntax error near unexpected token `('
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         """
+>         Provide a friendly representation
+>         :returns: Machine friendly representation
+>         """
+bash: $'\n        Provide a friendly representation\n        :returns: Machine friendly representation\n        ': command not found
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $         return "<Twilio.Studio>"
+bash: return: <Twilio.Studio>: numeric argument required
+bash: return: can only `return' from a function or sourced script
+(venv) @ellipsis52 ➜ /workspaces/twilio-python (main) $
